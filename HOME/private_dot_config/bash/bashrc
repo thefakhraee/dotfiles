@@ -1,0 +1,33 @@
+export PATH="${PATH}:$HOME/.local/bin"
+export VISUAL=nano
+export EDITOR=nano
+
+# # If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# oh love
+shopt -s autocd
+
+# correct typos
+shopt -s cdspell
+
+# colors
+eval $(dircolors -b)
+
+# run functions
+source_completion
+create_local_opt
+add_opt_liquidprompt
+add_opt_fzf
+
+PS1=$PS1'\[$(vterm_prompt_end)\]'

@@ -1,0 +1,6 @@
+source $HOME/.config/shell/variables
+source $HOME/.config/shell/functions
+source $HOME/.config/shell/vterm
+source $HOME/.config/shell/aliases
+source $HOME/.config/bash/bashrc
+source $HOME/.config/bash/chezmoi.bash

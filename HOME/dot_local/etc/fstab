@@ -1,0 +1,2 @@
+PARTLABEL="EFI" /boot/efi vfat defaults,noatime,discard 0 2
+PARTLABEL="LINUX" / ext4 defaults,errors=remount-ro 0 1

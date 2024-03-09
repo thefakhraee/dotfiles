@@ -1,0 +1,4 @@
+PATH="${PATH}:$HOME/.local/bin"
+source $HOME/.config/bash/functions
+source $HOME/.config/bash/aliases
+SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"

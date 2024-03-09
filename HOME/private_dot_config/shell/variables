@@ -1,0 +1,8 @@
+# Default Editor
+export EDITOR=/etc/alternatives/editor
+
+# SSH Agent Socket Path
+export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
+
+# User
+local_opt="$HOME/.local/opt"

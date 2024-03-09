@@ -1,0 +1,6 @@
+Command=sh -c '$HOME/.local/bin/show root 2>/dev/null'
+UseLabel=0
+Text=/ free
+UpdatePeriod=30000
+Font=Vazir Code Hack Extra Height 11
+

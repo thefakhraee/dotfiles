@@ -1,0 +1,7 @@
+#Acquire::http::Proxy "http://192.168.1.1:1234";
+#Acquire::https::Proxy "DIRECT";
+#Acquire::http::proxy "socks5h://server:port";
+
+# Acquire::http::Proxy {
+#     your.local.repository DIRECT;
+# };

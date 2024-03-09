@@ -1,0 +1,6 @@
+Command=sh -c '$HOME/.local/bin/show ping 2>/dev/null'
+UseLabel=0
+Text=ping
+UpdatePeriod=10000
+Font=Vazir Code Hack Extra Height Bold 11
+

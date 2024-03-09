@@ -1,0 +1,8 @@
+new-session -s 'init'
+send-keys 'sudo journalctl -f' C-m
+neww
+#send-keys 'p 1 -i 3' C-m
+#splitp -v
+send-keys 'while true; do sshkt me.mostafajan-443 ping -i 5 8.8.8.8; done' C-m
+
+

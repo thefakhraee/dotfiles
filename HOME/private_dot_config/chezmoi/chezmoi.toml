@@ -1,0 +1,9 @@
+encryption = "age"
+
+[edit]
+command = "emacsclient"
+args = ["-nc"]
+
+[age]
+identity = "~/.age.key"
+recipient = "age15ezgwwcp42f0jhy7s8x4chcurcuh6fcs6nm3803745354hna5ecqxg2x5j"

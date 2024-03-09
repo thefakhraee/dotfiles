@@ -1,0 +1,6 @@
+Command=sh -c '$HOME/.local/bin/show ip 2>/dev/null'
+UseLabel=0
+Text=ip
+UpdatePeriod=60000
+Font=Vazir Code Hack Extra Height 11
+

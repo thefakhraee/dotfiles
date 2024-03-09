@@ -1,0 +1,10 @@
+Types: deb
+URIs: https://ftp.debian.org/debian/
+#URIs: http://debian.hostiran.ir/debian/
+#URIs: http://mirror.23m.com/debian/
+#URIs: http://ftp.fr.debian.org/debian/
+#URIs: http://cdn-fastly.deb.debian.org/debian
+Suites: testing testing-updates testing-proposed-updates testing-backports
+Components: main contrib non-free non-free-firmware
+Signed-By: /etc/apt/keyrings/archive-key-12.asc
+#Trusted: yes

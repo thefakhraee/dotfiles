@@ -1,0 +1,62 @@
+# ls
+alias ls='ls --literal --color=auto'
+alias l='ls -1'
+alias ll='ls -l'
+alias la='ls -a'
+alias lla='ll -a'
+
+# cd
+alias ..='cd ..'
+
+# grep
+alias grep='grep --color=auto'
+
+# cat
+alias cat='batcat'
+
+# mv
+alias mv='mv -i'
+
+# ssh
+alias sagent='eval $(ssh-agent -s)'
+alias ssh='ssh -o ServerAliveInterval=60'
+
+# vpn and sock
+alias sshtl='sshuttle --disable-ipv6 --dns --to-ns 9.9.9.9 -r'
+alias sshkt='ssh -D 127.0.0.1:9050'
+
+# network
+alias pgg='ping google.com'
+alias axl='axel -a -n 8'
+
+# media
+alias mpv='mpv --audio-display=no'
+#alias mvq='mv "$(quodlibet --print-query=title=$(quodlibet --print-playing "<title>"))" .'
+alias amvq='quodlibet --print-query=title="$(quodlibet --print-playing "'"<title>"'")"'
+alias yt-dlp='proxychains yt-dlp'
+alias yt3='yt-dlp -f ba -x --audio-format mp3 -o "%(title)s"'
+
+# nerdctl
+alias nd='nerdctl'
+alias ndr='nerdctl run --rm'
+
+#
+alias rr='rm -ri'
+alias rm='rm -i'
+alias less='less -FRX'
+alias diff='colordiff'
+alias dush='du -csh *|sort -h'
+alias scl='sudo systemctl'
+alias scsv='curl -L http://git.io/unix'
+alias ub='udisksctl mount -b'
+alias trj='trans -b -no-bidi -t fa'
+alias wtt='curl wttr.in/mashhad'
+alias ly='setxkbmap -layout us,ir -option "grp:alt_shift_toggle,ctrl:nocaps"'
+alias lightup='xbacklight -inc 10'
+alias lightdown='xbacklight -dec 10'
+alias dg='dig +{,no}short'
+alias pyweb='hostname -I && python3 -m http.server'
+alias syslog='sudo xtail /var/log/syslog'
+alias mg='mg -n'
+alias debs-by-size="dpkg-query -Wf 'x \${Installed-Size} \${Package} \${Status}\n' | sed -ne '/^x  /d' -e '/^x \(.*\) install ok installed$/s//\1/p' | sort -nr"
+alias emc="emacsclient"

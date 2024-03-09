@@ -1,0 +1,213 @@
+set nohelp
+set softwrap
+set constantshow
+set autoindent
+set cutfromcursor
+set guidestripe 80
+set locking
+set multibuffer # alt+, and alt+. alt-F to unset
+set positionlog
+# set tabsize 8
+# set tabstospaces
+
+
+## Snip whitespace at the end of lines when justifying or hard-wrapping.
+# set trimblanks
+
+## Disallow file modification.  Why would you want this in an rcfile? ;)
+# set view
+
+## The two single-column characters used to display the first characters
+## of tabs and spaces.  187 in ISO 8859-1 (0000BB in Unicode) and 183 in
+## ISO-8859-1 (0000B7 in Unicode) seem to be good values for these.
+## The default when in a UTF-8 locale:
+# set whitespace "»·"
+## The default otherwise:
+# set whitespace ">."
+
+## Detect word boundaries differently by treating punctuation
+## characters as parts of words.
+# set wordbounds
+
+## The characters (besides alphanumeric ones) that should be considered
+## as parts of words.  This option does not have a default value.  When
+## set, it overrides option 'set wordbounds'.
+# set wordchars "<_>."
+
+## Let an unmodified Backspace or Delete erase the marked region (instead
+## of a single character, and without affecting the cutbuffer).
+# set zap
+
+## Paint the interface elements of nano.  These are examples;
+## by default there are no colors, except for errorcolor.
+# set titlecolor brightwhite,blue
+# set statuscolor brightwhite,green
+# set errorcolor brightwhite,red
+# set selectedcolor brightwhite,magenta
+# set stripecolor ,yellow
+# set numbercolor cyan
+# set keycolor cyan
+# set functioncolor green
+## In root's .nanorc you might want to use:
+# set titlecolor brightwhite,magenta
+# set statuscolor brightwhite,magenta
+# set errorcolor brightwhite,red
+# set selectedcolor brightwhite,cyan
+# set stripecolor ,yellow
+# set numbercolor magenta
+# set keycolor brightmagenta
+# set functioncolor magenta
+
+
+## Setup of syntax coloring.
+##
+##   syntax "name" ["filename regex" ...]
+##
+##   color|icolor foreground,background "regex" ["regex"...]
+##   [...]
+##
+## 'color' will do case-sensitive matches, while 'icolor' will do
+## case-insensitive matches.
+##
+## All color commands are applied in the order in which they are specified,
+## meaning that later commands can recolor stuff that was colored earlier.
+##
+## Valid color names for foreground and background are: white, black, normal,
+## red, blue, green, yellow, magenta, cyan.  For foreground colors, you may
+## use the prefix "bright" to get a stronger highlight.
+##
+## All regexes (regular expressions) are of the extended type (ERE).
+##
+## If the coloring rule should span multiple lines, use the following format:
+##
+##   color fg,bg  start="regex" end="regex"
+##
+## If you wish, you may put your syntax definitions in separate files.
+## You can make use of such files as follows:
+##
+##   include "/path/to/syntax_file.nanorc"
+
+## To include all existing syntax definitions, you can do:
+include "/usr/share/nano/*.nanorc"
+
+
+## If <Tab> should always produce four spaces when editing a Python file,
+## independent of the settings of 'tabsize' and 'tabstospaces':
+# extendsyntax python tabgives "    "
+
+## If <Tab> should always produce an actual TAB when editing a Makefile:
+# extendsyntax makefile tabgives "	"
+
+
+## Key bindings.
+## See nanorc(5) (section REBINDING KEYS) for more details on this.
+
+## The <Ctrl+Delete> keystroke deletes the word to the right of the cursor.
+## On some terminals the <Ctrl+Backspace> keystroke produces ^H, which is
+## the ASCII character for backspace, so it is bound by default to the
+## backspace function.  The <Backspace> key itself produces a different
+## keycode, which is hard-bound to the backspace function.  So, if you
+## normally use <Backspace> for backspacing and not ^H, you can make
+## <Ctrl+Backspace> delete the word to the left of the cursor with:
+# bind ^H chopwordleft main
+
+## If you would like nano to have keybindings that are more "usual",
+## such as ^O for Open, ^F for Find, ^H for Help, and ^Q for Quit,
+## then uncomment these:
+#bind ^Q exit all
+#bind ^S savefile main
+#bind ^W writeout main
+#bind ^O insert main
+#bind ^H help all
+#bind ^H exit help
+#bind ^F whereis all
+#bind ^G findnext all
+#bind ^B wherewas all
+#bind ^D findprevious all
+#bind ^R replace main
+#bind M-X flipnewbuffer all
+#bind ^X cut all
+#bind ^C copy main
+#bind ^V paste all
+#bind ^P curpos main
+#bind ^A mark main
+#unbind ^K main
+#unbind ^U all
+#unbind ^N main
+#unbind ^Y all
+#unbind M-J main
+#unbind M-T main
+#bind ^T gotoline main
+#bind ^T gotodir browser
+#bind ^Y speller main
+#bind M-U undo main
+#bind M-R redo main
+#bind ^U undo main
+#bind ^E redo main
+#set multibuffer
+
+####
+# https://raw.githubusercontent.com/scopatz/nanorc/master/sh.nanorc
+###
+syntax "SH" "\.sh$" "\.ash" "\.bashrc" "bashrc" "\.bash_aliases" "bash_aliases" "\.bash_functions" "bash_functions" "\.bash_login" "\.bash_logout" "\.bash_profile" "bash_profile" "\.profile" "revise\..+$"
+header "^#!.*/(env +)?(ba|da|a)?sh( |$)"
+magic "(POSIX|Bourne-Again) shell script.*text"
+comment "#"
+
+linter dash -n
+
+## keywords:
+color green "\<(case|do|done|elif|else|esac|fi|for|function|if|in|select|then|time|until|while)\>"
+color green "(\{|\}|\(|\)|\;|\]|\[|`|\\|\$|<|>|!|=|&|\|)"
+color green "-[Ldefgruwx]\>"
+color green "-(eq|ne|gt|lt|ge|le|s|n|z)\>"
+## builtins:
+color brightblue "\<(alias|bg|bind|break|builtin|caller|cd|command|compgen|complete|compopt|continue|declare|dirs|disown|echo|enable|eval|exec|exit|export|false|fc|fg|getopts|hash|help|history|jobs|kill|let|local|logout|mapfile|popd|printf|pushd|pwd|read|readarray|readonly|return|set|shift|shopt|source|suspend|test|times|trap|true|type|typeset|ulimit|umask|unalias|unset|wait)\>"
+## not buitins:
+## cat|chmod|chown|cp|env|grep|install|ln|make|mkdir|mv|rm|sed|tar|touch
+icolor brightgreen "^\s+[0-9A-Z_]+\s+\(\)"
+icolor brightred "\$\{?[0-9A-Z_!@#$*?-]+\}?"
+color brightyellow ""(\\.|[^"])*"" "'(\\.|[^'])*'"
+color cyan "(^|[[:space:]])#.*$"
+color ,green "[[:space:]]+$"
+
+
+#Constant Cursor Position Display
+#
+#    Meta-C toggles the -c (--constantshow) command-line option.
+#Smart Home Key
+#
+#    Meta-H toggles the -A (--smarthome) command-line option.
+#Auto Indent
+#
+#    Meta-I toggles the -i (--autoindent) command-line option.
+#Cut From Cursor To End-of-Line
+#
+#    Meta-K toggles the -k (--cutfromcursor) command-line option.
+#Long-Line Wrapping
+#
+#    Meta-L toggles the -b (--breaklonglines) command-line option.
+#Mouse Support
+#
+#    Meta-M toggles the -m (--mouse) command-line option.
+#Line Numbers
+#
+#    Meta-N toggles the -l (--linenumbers) command-line option.
+#Tabs To Spaces
+#
+#    Meta-O toggles the -E (--tabstospaces) command-line option.
+#Whitespace Display
+#
+#    Meta-P toggles the displaying of whitespace (see Whitespace).
+#Soft Wrapping
+#
+#    Meta-S toggles the -$ (--softwrap) command-line option.
+#Expert/No Help
+#
+#    Meta-X toggles the -x (--nohelp) command-line option.
+#Color Syntax Highlighting
+#
+#    Meta-Y toggles color syntax highlighting (if your nanorc defines syntaxes — see Syntax Highlighting).
+#Suspension
+#
+#    Meta-Z toggles the -z (--suspendable) command-line option.

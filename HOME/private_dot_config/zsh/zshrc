@@ -1,0 +1,48 @@
+# Load all stock functions (from $fpath files) called below.
+autoload -Uz compaudit compinit
+compinit
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+
+if [ -z "$ZSH_COMPDUMP" ]; then
+  ZSH_COMPDUMP="${ZDOTDIR:-${HOME}}/.zcompdump-${SHORT_HOST}-${ZSH_VERSION}"
+fi
+
+setopt histignorealldups sharehistory
+
+HISTSIZE=1000
+SAVEHIST=1000
+HISTFILE=~/.zsh_history
+
+# $PATH
+export PATH="$PATH:$HOME/.local/bin"
+
+# Emacs Tramp
+[[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
+
+# get bash complete to work in zsh
+[[ -n "$ZSH_VERSION" ]] && autoload bashcompinit && bashcompinit
+
+# autojump
+ajz='/usr/share/autojump/autojump.zsh'
+[[ -f $ajz ]] && source $ajz
+
+# colors
+eval $(dircolors -b)
+[[ -s "/etc/grc.zsh" ]] && source /etc/grc.zsh
+
+# run functions
+create_local_opt
+add_opt_liquidprompt
+add_opt_fzf zsh
+
+#[[ -n "$INSIDE_EMACS" ]] && chpwd() { print -P "\033AnSiTc %d" }
+[[ -n "${INSIDE_EMACS}" ]] && chpwd() { print -P "\032/$(pwd)" } || true
+
+# vterm
+setopt PROMPT_SUBST
+PROMPT=$PROMPT'$(vterm_prompt_end)'
+autoload -U add-zsh-hook
+add-zsh-hook -Uz chpwd (){ vterm_set_directory }
+
+# pushd popd cd and ...
+setopt auto_pushd

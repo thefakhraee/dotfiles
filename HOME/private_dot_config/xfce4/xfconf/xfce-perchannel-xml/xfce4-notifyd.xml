@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<channel name="xfce4-notifyd" version="1.0">
+  <property name="applications" type="empty">
+    <property name="known_applications" type="array">
+      <value type="string" value="audacious"/>
+      <value type="string" value="brave-browser"/>
+      <value type="string" value="brave-browser-beta"/>
+      <value type="string" value="brave-browser-nightly"/>
+      <value type="string" value="clementine"/>
+      <value type="string" value="fr.handbrake.ghb"/>
+      <value type="string" value="im.srain.Srain"/>
+      <value type="string" value="io.github.quodlibet.QuodLibet"/>
+      <value type="string" value="notify-send"/>
+      <value type="string" value="opera"/>
+      <value type="string" value="org.telegram.desktop"/>
+      <value type="string" value="org.telegram.desktop._a31edf8c2acff1f51c2b03a48e24be2e"/>
+      <value type="string" value="org.xfce.Thunar"/>
+      <value type="string" value="parole-notify"/>
+      <value type="string" value="pragha"/>
+      <value type="string" value="signal"/>
+      <value type="string" value="Spotify"/>
+      <value type="string" value="Strawberry"/>
+      <value type="string" value="telegramdesktop"/>
+      <value type="string" value="thunar"/>
+      <value type="string" value="vivaldi-stable"/>
+      <value type="string" value="Xfce volume control"/>
+      <value type="string" value="Xfce4-notifyd settings"/>
+      <value type="string" value="xfce4-power-manager"/>
+      <value type="string" value="xfce4-sensors-plugin"/>
+      <value type="string" value="xfce4-settings-helper"/>
+      <value type="string" value="xfce4-xkb-plugin"/>
+    </property>
+    <property name="muted_applications" type="array">
+      <value type="string" value="Strawberry"/>
+      <value type="string" value="clementine"/>
+      <value type="string" value="audacious"/>
+      <value type="string" value="xfce4-xkb-plugin"/>
+    </property>
+  </property>
+  <property name="theme" type="string" value="Smoke"/>
+  <property name="do-slideout" type="bool" value="true"/>
+  <property name="do-fadeout" type="bool" value="true"/>
+  <property name="do-not-disturb" type="bool" value="false"/>
+  <property name="expire-timeout" type="int" value="4"/>
+  <property name="notification-log" type="bool" value="true"/>
+  <property name="log-max-size-enabled" type="bool" value="true"/>
+  <property name="show-notifications-on" type="string" value="all-monitors"/>
+  <property name="log-level" type="string" value="always"/>
+  <property name="log-level-apps" type="string" value="all"/>
+  <property name="notify-location" type="string" value="bottom-right"/>
+  <property name="date-time-custom-format" type="string" value="%a %H:%M:%S"/>
+  <property name="notification-display-fields" type="string" value="icon-summary"/>
+  <property name="initial-opacity" type="double" value="0.71999999999999997"/>
+  <property name="plugin" type="empty">
+    <property name="hide-on-read" type="bool" value="true"/>
+    <property name="log-icon-size" type="int" value="8"/>
+    <property name="after-menu-shown" type="string" value="mark-all-read"/>
+    <property name="hide-clear-prompt" type="bool" value="true"/>
+    <property name="log-display-limit" type="int" value="5"/>
+  </property>
+  <property name="expire-timeout-allow-override" type="bool" value="false"/>
+  <property name="log-max-size" type="uint" value="50"/>
+  <property name="date-time-format" type="string" value="locale-default"/>
+</channel>

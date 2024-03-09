@@ -1,0 +1,13 @@
+[Unit]
+Description=SSH Socket
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=10
+EnvironmentFile=%h/.config/environment.d/sshkt_host.conf
+ExecStart=/usr/bin/bash -c 'while true; do ssh -D 127.0.0.1:9050 $SSHKT_HOST ping -i 5 8.8.8.8; done'
+
+[Install]
+WantedBy=default.target

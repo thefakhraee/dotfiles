@@ -1,0 +1,5 @@
+# http://www.bash2zsh.com/essays/essay1_file_manager.html
+alias -s pdf=mupdf
+alias -s txt=less
+alias -s png=mupdf
+alias -s jpg=mupdf

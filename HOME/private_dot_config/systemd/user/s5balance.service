@@ -1,0 +1,11 @@
+[Unit]
+Description=Socks5BalancerAsio
+After=network.target
+
+[Service]
+Type=idle
+WorkingDirectory=%h/.local/opt/Socks5BalancerAsio
+ExecStart=%h/.local/opt/Socks5BalancerAsio/Socks5BalancerAsio -c SimpleConfig.json
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,6 @@
+Command=jdate '+%d'
+UseLabel=0
+Text=rouz
+UpdatePeriod=3600000
+Font=Vazir Code Hack Extra Height Bold 11
+

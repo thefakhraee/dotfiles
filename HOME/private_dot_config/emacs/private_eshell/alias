@@ -1,0 +1,25 @@
+alias syslog sudo xtail /var/log/syslog $*
+alias pyweb hostname -I && python3 -m http.server $*
+alias dg dig +{,no}short $*
+alias wtt curl wttr.in/mashhad $*
+alias trj trans -b -no-bidi -t fa $*
+alias ub udisksctl mount -b $*
+alias scsv curl -L http://git.io/unix $*
+alias scl sudo systemctl $*
+alias dush du -csh *|sort -h $*
+alias diff colordiff $*
+alias less less -FX $*
+alias amvq quodlibet --print-query title "$(quodlibet --print-playing "<title>")" $*
+alias mpv mpv --audio-display=no $*
+alias axl axel -a -n 8 $*
+alias pgg ping google.com $*
+alias sshkt ssh -D 127.0.0.1:9050 $*
+alias sshtl sshuttle --disable-ipv6 --dns --to-ns 9.9.9.9 -r $*
+alias ssh ssh -o ServerAliveInterval=60 $*
+alias sagent eval $(ssh-agent -s) $*
+alias grep grep --color auto $*
+alias .. cd .. $*
+alias sudo sudo  $*
+alias youtube_mp3 proxychains yt-dlp -f ba --extract-audio --audio-format mp3 --audio-quality 0 $*
+alias clear clear t
+alias p ping $1.$1.$1.$1

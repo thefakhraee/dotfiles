@@ -1,0 +1,6 @@
+Command=sh -c '$HOME/.local/bin/show playing 2>/dev/null | cut -c 1-102'
+UseLabel=0
+Text=playing
+UpdatePeriod=15000
+Font=Vazir Code Extra Height Bold 12
+
