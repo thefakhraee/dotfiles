@@ -2,19 +2,20 @@
 
 (bind-keys*
  ("M-SPC" . consult-buffer)
- ("M-o" . consult-buffer-other-window)
+ ("M-S-SPC" . consult-buffer-other-window)
  ("M--" . popper-toggle)
- ("M-[" . writeroom-mode)
- ("M-]" . kill-process))
+ ("M-_" . writeroom-mode)
+ ("M-\\" . kill-process)
+ ("C-c l" . org-store-link))
 
-(bind-keys* :prefix-map local-alt-bktk-map
+(bind-keys* :prefix-map local-window-map
 	    :prefix "M-`"
 	    ("M-`" . ace-window)
 	    ("<tab>" . window-swap-states)
 	    ("SPC" . local/window-split-toggle)
 	    )
 
-(bind-keys* :prefix-map local-alt-bkspc-map
+(bind-keys* :prefix-map local-shell-map
 	    :prefix "M-<backspace>"
 	    ("M-<backspace>" . vterm-toggle)
 	    ("e" . eshell)
@@ -22,45 +23,7 @@
 	    ("k" . vterm-send-next-key)
 	    )
 
-(bind-keys* :prefix-map local-alt-bkslsh-map
-	    :prefix "M-\\"
-	    ("`" . tmm-menubar)
-	    ("?" . man)
-	    ("0" . local/unsocks)
-	    ("1" . local/socks)
-	    (">" . writeroom-increase-width)
-	    ("<" . writeroom-decrease-width)
-	    ("SPC" . whitespace-mode)
-	    )
-
-(bind-keys* :prefix-map local-alt-smcol-map
-	    :prefix "M-;"
-	    ("b" . local/bidi)
-	    ("c" . display-fill-column-indicator-mode)
-	    ("f" . consult-recent-file)
-	    ("g" . local/google-translate)
-	    ("i" . ibuffer)
-	    ("n" . customize-option)
-	    ("r" . shr-render-buffer)
-	    ("t" . trashed)
-	    ("v" . revert-buffer)
-	    ("x" . desktop-read)
-	    ("X" . desktop-save-in-desktop-dir)
-	    ("y" . consult-yank-from-kill-ring)
-	    ("z" . customize-group)
-	    )
-
-(bind-keys* :prefix-map local-alt-p-map
-	    :prefix "M-p"
-	    ("M-p" . package-list-packages)
-	    ("i" . package-install)
-	    ("r" . package-autoremove)
-	    ("g" . playerctl-play-pause-song)
-	    ("n" . playerctl-next-song)
-	    ("p" . playerctl-previous-song)
-	    )
-
-(bind-keys* :prefix-map local-alt-s-map
+(bind-keys* :prefix-map local-search-map
 	    :prefix "M-s"
     	    ("M-s" . consult-line)
     	    ("c" . avy-goto-char)
@@ -74,13 +37,52 @@
 	    )
 
 (bind-keys* :prefix-map local-embark-map
-	    :prefix "C-;"
+	    :prefix "M-;"
 	    ("a" . embark-act)
 	    ("b" . embark-become)
 	    ("c" . embark-collect)
 	    ("d" . embark-dwim)
 	    ("e" . embark-export)
 	    ("l" . embark-live)
+	    )
+
+(bind-keys* :prefix-map local-firstclass-map
+	    :prefix "M-o"
+	    ("M-o" . package-list-packages)
+	    ("i" . package-install)
+	    ("r" . package-autoremove)
+	    ("i" . ibuffer)
+	    ("t" . trashed)
+	    ("n" . customize-option)
+	    ("z" . customize-group)
+	    ("v" . revert-buffer)
+	    ("c" . display-fill-column-indicator-mode)
+	    ("m" . tmm-menubar)
+	    ("?" . man)
+	    ("SPC" . whitespace-mode)
+	    ("f" . consult-recent-file)
+	    ("s" . server-mode)
+	    )
+
+(bind-keys* :prefix-map local-2ndclass-map
+	    :prefix "M-["
+	    ("r" . shr-render-buffer)
+	    ("x" . desktop-read)
+	    ("X" . desktop-save-in-desktop-dir)
+	    ("y" . consult-yank-from-kill-ring)
+	    ("g" . playerctl-play-pause-song)
+	    ("n" . playerctl-next-song)
+	    ("p" . playerctl-previous-song)
+	    (">" . writeroom-increase-width)
+	    ("<" . writeroom-decrease-width)
+	    )
+
+(bind-keys* :prefix-map local-local-map
+	    :prefix "M-]"
+	    ("M-]" . local/google-translate)
+	    ("0" . local/unsocks)
+	    ("1" . local/socks)
+	    ("b" . local/bidi)
 	    )
 
 ;;; In Persian Layout

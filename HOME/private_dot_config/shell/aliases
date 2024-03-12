@@ -41,8 +41,7 @@ alias nd='nerdctl'
 alias ndr='nerdctl run --rm'
 
 #
-alias rr='rm -ri'
-alias rm='rm -i'
+alias rm='trash-put'
 alias less='less -FRX'
 alias diff='colordiff'
 alias dush='du -csh *|sort -h'
