@@ -62,3 +62,13 @@
       (save-selected-window
         (other-window 1)
         (switch-to-buffer (other-buffer))))))
+
+
+(defun local/memoir ()
+  "Open the memoir"
+  (interactive)
+  (setq memoir-file "~/Sync/Documents/org/else_memoir.org")
+  (switch-to-buffer (find-file-noselect memoir-file))
+  (set-window-point
+     (get-buffer-window (current-buffer) 'visible)
+     (point-max)))

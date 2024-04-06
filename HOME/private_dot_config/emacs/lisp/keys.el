@@ -62,6 +62,7 @@
 	    ("SPC" . whitespace-mode)
 	    ("f" . consult-recent-file)
 	    ("s" . server-mode)
+	    ("*" . org-emphasize)
 	    )
 
 (bind-keys* :prefix-map local-2ndclass-map
@@ -79,7 +80,8 @@
 
 (bind-keys* :prefix-map local-local-map
 	    :prefix "M-]"
-	    ("M-]" . local/google-translate)
+	    ("M-]" . local/memoir)
+	    ("]" . local/google-translate)
 	    ("0" . local/unsocks)
 	    ("1" . local/socks)
 	    ("b" . local/bidi)

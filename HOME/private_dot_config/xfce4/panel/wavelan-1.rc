@@ -4,5 +4,5 @@ AutohideMissing=false
 SignalColors=true
 ShowIcon=true
 ShowBar=true
-Command=thunar
+Command=xfce4-terminal
 
