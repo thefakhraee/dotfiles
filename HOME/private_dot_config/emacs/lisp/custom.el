@@ -35,9 +35,6 @@
  '(doc-view-resolution 144)
  '(ediff-split-window-function 'split-window-horizontally)
  '(ediff-window-setup-function 'ediff-setup-windows-plain)
- '(erc-hide-list '("JOIN" "QUIT"))
- '(erc-nick "thefakhraee")
- '(erc-server "localhost")
  '(eshell-history-size 500)
  '(eshell-syntax-highlighting-global-mode t)
  '(eshell-visual-commands
@@ -50,7 +47,6 @@
  '(initial-buffer-choice t)
  '(marginalia-max-relative-age 0)
  '(marginalia-mode t)
- '(menu-bar-mode nil)
  '(org-download-screenshot-method "xfce4-screenshooter -r -o cat > %s")
  '(org-mode-hook
    '(#[0 "\300\301\302\303\304$\207"
@@ -66,7 +62,7 @@
    '(("gnu" . "https://elpa.gnu.org/packages/")
      ("melpa" . "https://raw.githubusercontent.com/d12frosted/elpa-mirror/master/melpa/")))
  '(package-selected-packages
-   '(writeroom-mode diredfl json-mode doom-themes xterm-color vterm-toggle lsp-ui lsp-mode flycheck yaml-mode ox-reveal celestial-mode-line rainbow-delimiters eshell-syntax-highlighting trashed org-download dired-hide-dotfiles playerctl compat embark-consult ace-window crux org-modern corfu popper pulsar which-key vertico orderless marginalia embark bind-key bash-completion avy))
+   '(mini-modeline writeroom-mode diredfl json-mode doom-themes xterm-color vterm-toggle lsp-ui lsp-mode flycheck yaml-mode ox-reveal celestial-mode-line rainbow-delimiters eshell-syntax-highlighting trashed org-download dired-hide-dotfiles playerctl compat embark-consult ace-window crux org-modern corfu popper pulsar which-key vertico orderless marginalia embark bind-key bash-completion avy))
  '(popper-echo-mode t)
  '(popper-mode t)
  '(popper-reference-buffers
@@ -79,18 +75,11 @@
  '(recentf-save-file "~/.cache/emacs/recentf")
  '(repeat-mode t)
  '(savehist-mode t)
- '(scroll-bar-mode nil)
  '(sh-basic-offset 2)
  '(shell-dynamic-complete-functions
    '(comint-c-a-p-replace-by-expanded-history shell-environment-variable-completion shell-command-completion shell-c-a-p-replace-by-expanded-directory pcomplete-completions-at-point shell-filename-completion comint-filename-completion bash-completion-dynamic-complete))
  '(shell-file-name "/bin/zsh")
  '(tab-always-indent 'complete)
- '(tab-bar-close-button-show nil)
- '(tab-bar-format '(tab-bar-format-tabs))
- '(tab-bar-new-tab-choice "*scratch*")
- '(tab-bar-select-tab-modifiers '(control))
- '(tab-bar-tab-name-function 'tab-bar-tab-name-current-with-count)
- '(tool-bar-mode nil)
  '(use-dialog-box nil)
  '(use-file-dialog nil)
  '(use-short-answers t)
@@ -124,9 +113,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :extend nil :stipple nil :background "#272822" :foreground "#F8F8F2" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 132 :width normal :foundry "    " :family "Vazir Code Hack Extra Height"))))
  '(aw-leading-char-face ((t (:foreground "dark violet" :height 1.7))))
- '(region ((t nil)))
- '(tab-bar ((t (:inherit mode-line :background "grey85" :foreground "black"))))
- '(tab-bar-tab ((t (:box (:line-width (1 . 1) :style released-button) :foreground "OliveDrab2" :inherit mode-line))))
- '(tab-bar-tab-inactive ((t (:foreground "dim gray" :background "grey75" :inherit tab-bar-tab)))))
+ '(mini-modeline-mode-line ((t (:background "#b3ee3a" :box nil :height 0.14))))
+ '(region ((t nil))))

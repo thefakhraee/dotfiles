@@ -1,6 +1,3 @@
-;; Yay
-(toggle-frame-maximized)
-
 ;; Customization
 (setq custom-file (locate-user-emacs-file "lisp/custom.el"))
 (load custom-file)
@@ -26,3 +23,4 @@
                      gcs-done)))
 
 ;(call-interactively #'cd)
+;(mini-modeline-mode)
