@@ -1,0 +1,13 @@
+[Unit]
+Description=Syncthing Tray
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=10
+EnvironmentFile=%h/.config/environment.d/syncthing-tray.conf
+ExecStart=%h/.local/bin/syncthing-tray -api $API_KEY
+
+[Install]
+WantedBy=default.target

@@ -22,5 +22,6 @@
                               (time-subtract after-init-time before-init-time)))
                      gcs-done)))
 
+(windmove-default-keybindings)
 ;(call-interactively #'cd)
 ;(mini-modeline-mode)

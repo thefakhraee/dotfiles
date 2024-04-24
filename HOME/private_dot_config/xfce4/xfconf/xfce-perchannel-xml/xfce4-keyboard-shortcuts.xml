@@ -63,11 +63,11 @@
       <property name="&lt;Super&gt;s" type="string" value="jumpapp -w xfce4-terminal"/>
       <property name="&lt;Shift&gt;&lt;Super&gt;s" type="string" value="xfce4-terminal"/>
       <property name="&lt;Super&gt;y" type="string" value="jumpapp -R spotify"/>
-      <property name="&lt;Super&gt;p" type="string" value="jumpapp -R -t MON xfce4-terminal -T MON -e &apos;tmux attach&apos;"/>
       <property name="&lt;Super&gt;f" type="string" value="jumpapp -w thunar"/>
       <property name="&lt;Super&gt;g" type="string" value="sh -c &apos;jumpapp -R Telegram || jumpapp -R telegram-desktop || jumpapp -R -t &quot;Telegram Web&quot; brave&apos;"/>
       <property name="&lt;Super&gt;Tab" type="string" value="jumpapp -w emacs"/>
       <property name="&lt;Super&gt;w" type="string" value="jumpapp -w brave-browser"/>
+      <property name="&lt;Super&gt;p" type="string" value="rofi-rbw -a copy"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">

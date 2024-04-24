@@ -40,6 +40,10 @@ alias yt3='yt-dlp -f ba -x --audio-format mp3 -o "%(title)s"'
 alias nd='nerdctl'
 alias ndr='nerdctl run --rm'
 
+# incognito
+# the space character at the beginning -- with the hist_ignore_space setting enabled it won't add the unset to your shell history either.
+alias incognito=' unset HISTFILE'
+
 #
 alias rm='trash-put'
 alias less='less -FRX'

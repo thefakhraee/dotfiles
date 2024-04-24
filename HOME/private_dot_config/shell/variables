@@ -6,3 +6,4 @@ export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
 
 # User
 local_opt="$HOME/.local/opt"
+EGET_CONFIG="$HOME/.config/eget/eget.toml"

@@ -6,3 +6,4 @@ source $HOME/.config/zsh/aliases
 source $HOME/.config/zsh/zshrc
 source $HOME/.config/zsh/chezmoi.zsh
 source $HOME/.config/zsh/nerdctl.zsh
+source $HOME/.config/zsh/rbw.zsh 

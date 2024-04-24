@@ -7,8 +7,15 @@ if [ -z "$ZSH_COMPDUMP" ]; then
   ZSH_COMPDUMP="${ZDOTDIR:-${HOME}}/.zcompdump-${SHORT_HOST}-${ZSH_VERSION}"
 fi
 
-setopt histignorealldups sharehistory
-
+# history
+setopt sharehistory \
+       hist_ignore_space \
+       hist_ignore_all_dups \
+       hist_ignore_dups \
+       hist_ignore_space \
+       hist_reduce_blanks \
+       hist_save_no_dups \
+       hist_verify
 HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.zsh_history
