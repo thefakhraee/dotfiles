@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+#set -x
+#market="&mkt=en-US"
+#market="&mkt=en-CA"
+#market="&mkt=en-UK"
+#market="&mkt=en-AU"
+#market="&mkt=de-DE"
+market="&mkt=ja-JP"
+#market="&mkt=zh-CN"
+
+path="$HOME/Pictures/bing"
+bing="https://www.bing.com"
+api="/HPImageArchive.aspx?"
+format="&format=js"
+day="&idx=0"
+const="&n=1"
+extn=".jpg"
+size="1920x1200"
+reqImg="${bing}${api}${format}${day}${market}${const}"
+[[ -d "${path}" ]] || mkdir -p "${path}"
+
+apiResp=$(curl -s "${reqImg}")
+[[ "${?}" -gt 0 ]] && echo "Ping failed!" && exit 1
+
+defImgURL=${bing}$(echo "${apiResp}" |
+                   grep -oP "url\":\"[^\"]*" |
+                   cut -d "\"" -f 3
+                  )
+reqImgURL=${bing}$(echo "${apiResp}" |
+                   grep -oP "urlbase\":\"[^\"]*" |
+                   cut -d "\"" -f 3
+                  )"_"${size}${extn}
+
+[[ ! $(wget --prefer-family=IPv4 --quiet --spider ${reqImgURL}) ]] && reqImgURL="${defImgURL}"
+echo "${reqImgURL}"
+imgName=${reqImgURL%%&*} && imgName=${imgName##*=} && imgName=${imgName##*OHR.}
+
+{ [[ -f "${path}/${imgName%%.*}${extn}" ]] &&
+  echo "Image already exists"; } ||
+curl -s -o "${path}/${imgName}" "${reqImgURL}" &&
+xdg-open "${path}/${imgName%%.*}${extn}"

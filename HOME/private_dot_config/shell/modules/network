@@ -1,0 +1,20 @@
+# -*- mode: Shell-script; sh_shell: "bash"; -*-
+
+alias pgg='ping google.com'
+alias axl='axel -a -n 8'
+alias dg='dig +{,no}short'
+
+wgetr() {
+  wget --no-directories --recursive --level=1 --execute robots=off "${1}"
+}
+
+p() {
+  addr="$1.$1.$1.$1"
+  shift
+  ping $@ $addr
+}
+
+suks() {
+  addr="${1:-localhost:5000}"
+  curl --socks5 "${addr}" http://checkip.amazonaws.com
+}

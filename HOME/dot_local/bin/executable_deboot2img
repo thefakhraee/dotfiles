@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+#suite=$(apt-cache policy dpkg|awk '/http/ {print $3}')
+#suite=${suite%/*}
+suite="${1}"
+repo_url=$(apt-cache policy dpkg|awk '/http/ {print $2}')
+root_dir=$(mktemp -dp .)
+exclude="vim-common,vim-tiny"
+
+sudo debootstrap \
+     --arch=amd64\
+     --exclude="${exclude}"\
+     "${suite}"\
+     "${root_dir}"\
+     "${repo_url}"
+
+sudo rm -f "${root_dir}"/var/cache/apt/archives/*.deb
+sudo rm -f "${root_dir}"/var/lib/apt/lists/*dists*
+sudo rm -rf "${root_dir}"/usr/share/{doc,locale,man}
+cd "${root_dir}" 
+sudo tar cJf ../debian_"${suite}".tar.xz .
+cd -
+sudo rm -rf "${root_dir}"

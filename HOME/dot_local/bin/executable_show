@@ -1,0 +1,153 @@
+#!/usr/bin/env bash
+shopt -s extglob
+#set -x
+input="${1}"
+
+# Help
+usage='Help:
+$ show ip [ http | dns ]
+$ show mem [ free ]
+$ show ping'
+
+# Main
+_X_() {
+  # Errors and exit
+  die() {
+    msg="Error: ${1}"
+    >&2 echo "${msg}"
+    exit 1
+  }
+
+  case "${input}" in
+    ip|i)
+      getIPPub "${2}" || die "IP"
+      ;;
+    mem|m)
+      getMem "${2}" || die "Memory"
+      ;;
+    ping|g)
+      getPing "${2}" || die "Ping"
+      ;;
+    playing|p)
+      getPlaying || die "Playing"
+      ;;
+    root|r)
+      getRootFree || die "Root Free"
+      ;;
+    +([a-z],[a-z]))
+      echo TODO
+      ;;
+    ''|help|h)
+      echo "${usage}"
+      ;;
+    *)
+      die "Option ${input} is unknown, try 'show help'"
+      ;;
+  esac
+}
+
+# Public IP
+getIPPub() {
+  # Public IP DNS
+  getIPDNS() {
+    if ip_dns=$(nslookup -timeout=1 -retry=1 \
+                  myip.opendns.com 208.67.222.222 2>/dev/null); then
+      echo "${ip_dns##* }"
+    else
+      return 1
+    fi
+  }
+  # Public IP HTTP
+  getIPHTTP() {
+    #(curl -fsm 5 http://checkip.amazonaws.com 2>/dev/null)
+    if ip_http=$(wget -qO- \
+		   http://checkip.amazonaws.com 2>/dev/null); then
+      echo "${ip_http}" | tail -1
+    else
+      return 1
+    fi
+  }
+
+  local input="${1}"
+  case "${input}" in
+    dns|d)
+      getIPDNS || die "DNS request failed"
+      ;;
+    http|h)
+      getIPHTTP || die "HTTP request failed"
+      ;;    
+    '')
+      ip_dns="$(getIPDNS)" || ip_dns='Err'
+      ip_http="$(getIPHTTP)" || ip_http='Err'
+      if [[ "${ip_dns}" = "${ip_http}" ]]; then
+        echo "${ip_dns}"
+      else
+        echo "DNS=${ip_dns} HTTP=${ip_http}"
+      fi
+      ;;
+    *)
+      die "Option '${input}' is unknown"
+      ;;
+  esac
+}
+
+# Memory
+getMem() {
+  # getMemFree
+  getMemFree() {
+    awk '/MemAvailable/ { printf "%.3f\n", $2/1024/1024 }' /proc/meminfo
+  }
+
+  local input="${1}"
+  case "${input}" in
+    free|f|*)
+      getMemFree
+      ;;
+  esac
+}
+
+# / free
+getRootFree() {
+  df -h --output=avail / | tail -n 1
+}
+  
+# Ping
+getPing() {
+  local input="${1}"
+  [[ -z "${input}" ]] && local input='9.9.9.9'  
+  if raw_output=$(ping -4 -c 3 -n -q -w 5 ${input}); then
+    raw_line=$(echo "${raw_output}" | tail -1)
+    max=${raw_line%/*}
+    echo ${max##*/}
+  else
+    return 1
+  fi
+}
+
+
+# Currently playing
+getPlaying() {
+  count=0
+  for i in $(playerctl status -a); do
+    if [[ $i = "Playing" ]]
+    then iter=$count
+    fi
+    (( count++ ))
+  done
+
+  count=0
+  for i in $(playerctl -l); do
+    if [[ $count = $iter ]]
+    then player="$i"
+    fi
+    (( count++ ))
+  done
+
+  artist=$(playerctl -p "${player}" metadata | awk '/artist/ {$1=$2=""; print}')
+  title=$(playerctl -p "${player}" metadata | awk '/title/ {$1=$2=""; print}')
+  
+  echo "${artist##*( )} - ${title##*( )}"
+}
+
+# Exec script
+_X_ "${@}"

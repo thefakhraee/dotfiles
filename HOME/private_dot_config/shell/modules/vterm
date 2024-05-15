@@ -1,3 +1,5 @@
+# -*- mode: Shell-script; sh_shell: "bash"; -*-
+
 vterm_printf() {
     if [ -n "$TMUX" ] && ([ "${TERM%%-*}" = "tmux" ] || [ "${TERM%%-*}" = "screen" ] ); then
         # Tell tmux to pass the escape sequences through

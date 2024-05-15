@@ -1,0 +1,31 @@
+# -*- mode: Shell-script; sh_shell: "bash"; -*-
+
+# SSH Agent Socket Path
+export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
+
+alias sagent='eval $(ssh-agent -s)'
+alias ssh='ssh -o ServerAliveInterval=60'
+alias sshtl='sshuttle --disable-ipv6 --dns --to-ns 9.9.9.9 -r'
+alias sshkt='ssh -D 127.0.0.1:9050'
+
+sshL() {
+  # 43:whois.arin.net:43
+  remotehost=$1
+  localport=$2
+  remoteport=$3
+  [[ -z ${remoteport} ]] && remoteport="${localport}"
+  sudo ssh -nfL "${localport}:${remotehost}:${remoteport}" \
+           -F $HOME/.ssh/config \
+           "${using}"
+}
+
+
+sshR() {
+  localport=$1
+  remoteport=$2
+  [[ -z ${remoteport} ]] && remoteport="0"
+  sudo ssh -R "${remoteport}:localhost:${localport}" \
+           -F $HOME/.ssh/config \
+           "${using}" 2>&1 >/dev/null | \
+       awk '/^Allocated/ {print $3}'
+}

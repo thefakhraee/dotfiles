@@ -56,7 +56,6 @@
       <property name="&lt;Super&gt;r" type="string" value="jumpapp -R virt-manager">
         <property name="startup-notify" type="bool" value="true"/>
       </property>
-      <property name="&lt;Super&gt;e" type="string" value="jumpapp -R exfalso"/>
       <property name="&lt;Super&gt;Return" type="string" value="sh -c &apos;$HOME/.local/bin/secx&apos;">
         <property name="startup-notify" type="bool" value="true"/>
       </property>
@@ -68,6 +67,9 @@
       <property name="&lt;Super&gt;Tab" type="string" value="jumpapp -w emacs"/>
       <property name="&lt;Super&gt;w" type="string" value="jumpapp -w brave-browser"/>
       <property name="&lt;Super&gt;p" type="string" value="rofi-rbw -a copy"/>
+      <property name="&lt;Shift&gt;&lt;Super&gt;q" type="string" value="jumpapp -R exfalso"/>
+      <property name="&lt;Super&gt;e" type="string" value="xfce4-terminal -e &quot;emacsclient -te &apos;(eshell t)&apos;&quot;"/>
+      <property name="&lt;Super&gt;v" type="string" value="xfce4-terminal -e &quot;emacsclient -te &apos;(vterm t)&apos;&quot;"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">

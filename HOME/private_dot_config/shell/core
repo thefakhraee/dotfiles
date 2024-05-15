@@ -1,0 +1,113 @@
+# -*- mode: Shell-script; sh_shell: "bash"; -*-
+
+source <(cat $HOME/.config/shell/modules/*)
+
+# Default Editor
+export EDITOR=/etc/alternatives/editor
+
+# User
+local_opt="$HOME/.local/opt"
+export EGET_CONFIG="$HOME/.config/eget/eget.toml"
+export EGET_BIN="$HOME/.local/bin"
+
+# ls
+alias ls='ls --literal --color=auto'
+alias l='ls -1'
+alias ll='ls -l'
+alias la='ls -a'
+alias lla='ll -a'
+
+# cd
+alias ..='cd ..'
+
+# grep
+alias grep='grep --color=auto'
+
+# cat
+alias cat='batcat'
+
+# mv
+alias mv='mv -i'
+
+# nerdctl
+alias nd='nerdctl'
+alias ndr='nerdctl run --rm'
+
+# incognito
+# the space character at the beginning -- with the hist_ignore_space setting enabled it won't add the unset to your shell history either.
+alias incognito=' unset HISTFILE'
+
+#
+alias rm='trash-put'
+alias less='less -FRX'
+alias diff='colordiff'
+alias dush='du -csh *|sort -h'
+alias scl='sudo systemctl'
+alias ub='udisksctl mount -b'
+alias trj='trans -b -no-bidi -t fa'
+alias ly='setxkbmap -layout us,ir -option "grp:alt_shift_toggle,ctrl:nocaps"'
+alias lightup='xbacklight -inc 10'
+alias lightdown='xbacklight -dec 10'
+alias pyweb='hostname -I && python3 -m http.server'
+alias syslog='sudo xtail /var/log/syslog'
+alias mg='mg -n'
+alias emc="emacsclient"
+
+source_completion(){
+  [[ -f /etc/bash_completion ]] && ! shopt -oq posix && . /etc/bash_completion
+}
+
+create_local_opt() {
+  [[ -d "${local_opt}" ]] || mkdir -p "${local_opt}"
+}
+
+add_opt_liquidprompt() {
+  local liquidprompt_source="${local_opt}/liquidprompt/liquidprompt"
+  [[ -f "${liquidprompt_source}" ]] || \
+  git clone --depth 1 \
+    https://github.com/nojhan/liquidprompt.git "${liquidprompt_source%/*}"
+  source "${liquidprompt_source}"
+}
+
+add_opt_fzf() {
+  case "${1}" in
+    bash|'')
+      local no_shell=zsh
+      local fzf_dot='bash'
+      ;;
+    zsh)
+      local no_shell=bash
+      local fzf_dot='zsh'
+      ;;
+    *)
+      return 1
+      ;;
+  esac
+  local fzf_git_url='https://github.com/junegunn/fzf.git'
+  local fzf_source="${local_opt}/fzf"
+  local fzf_config="${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.${fzf_dot}
+
+  [[ -d "${fzf_source}" ]] || git clone --depth 1 ${fzf_git_url} "${fzf_source}"
+  [[ ! -e "${fzf_config}" ]] && \
+  echo n | ${fzf_source}/install --xdg \
+                                 --key-bindings \
+                                 --completion \
+                                 --no-fish \
+                                 --no-${no_shell}
+  source "${fzf_config}"
+}
+
+# courtsey of grml
+R() {
+  exec $SHELL $SHELL_ARGS "$@"
+}
+
+# send git diff to remote server
+gdiffr() {
+  host="${1}"
+  git diff | ssh "${host}" 'cat - >/tmp/.gdiffr'
+}
+
+# change up n dirs
+# https://www.commandlinefu.com/commands/view/10751/quickly-cd-out-of-directories-without-5-aliases
+up() { local x='';for i in $(seq ${1:-1});do x="$x../"; done;cd $x; }

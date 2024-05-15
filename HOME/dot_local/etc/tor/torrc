@@ -1,0 +1,3 @@
+# UseBridges 1
+# ClientTransportPlugin obfs4 exec /usr/bin/obfs4proxy managed
+# Bridge obfs4 141.201.27.48:420 gibberish cert=more-gibberish iat-mode=0

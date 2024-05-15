@@ -72,3 +72,25 @@
   (set-window-point
      (get-buffer-window (current-buffer) 'visible)
      (point-max)))
+
+"fucking ChatGPT did this"
+(defun convert-persian-to-western (input-string)
+  "Converts Persian (Eastern Arabic) numerals to Western Arabic numerals."
+  (replace-regexp-in-string "۰" "0"
+  (replace-regexp-in-string "۱" "1"
+  (replace-regexp-in-string "۲" "2"
+  (replace-regexp-in-string "۳" "3"
+  (replace-regexp-in-string "۴" "4"
+  (replace-regexp-in-string "۵" "5"
+  (replace-regexp-in-string "۶" "6"
+  (replace-regexp-in-string "۷" "7"
+  (replace-regexp-in-string "۸" "8"
+  (replace-regexp-in-string "۹" "9"
+  input-string)))))))))))
+
+(defun local/convert-pnumbers ()
+  "Interactive function to convert Persian numerals to Western numerals."
+  (interactive)
+  (let* ((input-string (read-string "Enter a string with Persian numerals: ")))
+    (message "Converted string: %s" (convert-persian-to-western input-string))))
+

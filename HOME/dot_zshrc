@@ -1,9 +1,6 @@
-source $HOME/.config/shell/variables
-source $HOME/.config/shell/functions
-source $HOME/.config/shell/aliases
-source $HOME/.config/shell/vterm
-source $HOME/.config/zsh/aliases
-source $HOME/.config/zsh/zshrc
-source $HOME/.config/zsh/chezmoi.zsh
-source $HOME/.config/zsh/nerdctl.zsh
-source $HOME/.config/zsh/rbw.zsh 
+source $HOME/.config/shell/core
+source $HOME/.config/shell/zsh/aliases
+source $HOME/.config/shell/zsh/zshrc
+source $HOME/.config/shell/zsh/chezmoi.zsh
+source $HOME/.config/shell/zsh/nerdctl.zsh
+source $HOME/.config/shell/zsh/rbw.zsh 

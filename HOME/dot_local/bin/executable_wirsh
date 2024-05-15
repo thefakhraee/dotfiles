@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+
+virsh='/usr/bin/virsh'
+virtv='/usr/bin/virt-viewer'
+suri='system'
+remote=''
+graphical=''
+
+while :; do
+  case "${1}" in
+    -n)
+      suri='session'
+      ;;
+    -m)
+      if [[ "${2}" ]] && [[ "${2}" != "-n" ]] && [[ "${2}" != "-g" ]]; then
+        remote="${2}"
+        shift
+      else
+        echo 'ERROR: Remote is empty'
+        exit 1
+      fi
+      ;;
+    -g)
+      graphical='true'
+      ;;
+    *)
+      else_args="${@}"
+      break
+  esac
+  shift
+done
+
+uri="qemu:///${suri}"
+muri="qemu+ssh://${remote}/${suri}"
+
+if [[ -z "${remote}" ]]; then
+  if [[ -n "${graphical}" ]]; then
+    ${virtv} -c "${uri}" ${else_args}
+  else
+    ${virsh} -c "${uri}" ${else_args}
+  fi
+else
+  if [[ -n "${graphical}" ]]; then
+    ${virtv} -c "${muri}" ${else_args}
+  else
+    ${virsh} -c "${muri}" ${else_args}
+  fi
+fi

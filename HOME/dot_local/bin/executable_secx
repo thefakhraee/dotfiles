@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+picture=$(find $HOME/Pictures/bing/ -type f | shuf -n 1)
+saver=$(mktemp)
+
+# https://github.com/google/xsecurelock/issues/92#issuecomment-646305188
+echo '#!/usr/bin/env bash' >"${saver}"
+echo 'hex_num=$(printf "%x" $XSCREENSAVER_WINDOW)' >>"${saver}"
+echo 'window_id=0x$hex_num' >>"${saver}"
+echo "xloadimage -onroot -fullscreen -windowid \$window_id $picture"\
+     >>"${saver}"
+chmod +x "${saver}"
+
+XSECURELOCK_SAVER="${saver}" \
+XSECURELOCK_BLANK_DPMS_STATE=suspend \
+XSECURELOCK_DISCARD_FIRST_KEYPRESS=0 \
+XSECURELOCK_BLANK_TIMEOUT=600 \
+XSECURELOCK_PASSWORD_PROMPT=cursor \
+XSECURELOCK_SHOW_DATETIME=1 \
+XSECURELOCK_SHOW_HOSTNAME=0 \
+XSECURELOCK_SHOW_USERNAME=0 \
+xsecurelock &>/dev/null && rm -f "${saver}" &&
+notify-send -t 10000 "$picture"

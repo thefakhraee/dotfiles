@@ -1,0 +1,11 @@
+[Unit]
+Description=SOCKS5 load balancing proxy
+After=network.target
+
+[Service]
+Type=idle
+EnvironmentFile=%h/.config/environment.d/go-dispatch-proxy.conf
+ExecStart=%h/.local/bin/go-dispatch-proxy -lport $LISTEN -tunnel $TUNNELS
+
+[Install]
+WantedBy=default.target

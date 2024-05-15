@@ -1,40 +1,40 @@
 [global]
 target = "~/.local/bin"
 quiet = false
-#upgrade_only = true
-
-["zyedidia/micro"]
-asset_filters = [ "static", ".tar.gz" ]
-
-["telegramdesktop/tdesktop"]
-asset_filters = [ ".tar.xz" ]
-all = true
-
-["doy/rbw"]
-file = "rbw*"
-all = true
-
-["mkropat/jumpapp"]
-asset_filters = [ ".tar.bz2" ]
-file = "jumpapp"
+upgrade_only = true
 
 ["twpayne/chezmoi"]
 asset_filters = [ "linux_amd64", ".tar.gz" ]
 file = "chezmoi"
 
-["imsnif/bandwhich"]
-asset_filters = [ "linux-gnu" ]
+["mkropat/jumpapp"]
+asset_filters = [ ".tar.bz2" ]
+file = "jumpapp"
+
+["alex2108/syncthing-tray"]
+
+["doy/rbw"]
+file = "rbw*"
+all = true
 
 ["containerd/nerdctl"]
 asset_filters = [ "nerdctl-1", "linux-amd64" ]
 all = true
 
+["rgwood/systemctl-tui"]
+
+["joehillen/sysz"]
+
 ["shadowsocks/shadowsocks-rust"]
 asset_filters = [ "linux-gnu" ]
 file = "sslocal"
 
-["alex2108/syncthing-tray"]
+["imsnif/bandwhich"]
+asset_filters = [ "linux-gnu" ]
 
-["rgwood/systemctl-tui"]
+["extremecoders-re/go-dispatch-proxy"]
 
-["joehillen/sysz"]
+["telegramdesktop/tdesktop"]
+asset_filters = [ ".tar.xz" ]
+all = true
+

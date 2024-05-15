@@ -1,0 +1,8 @@
+# -*- mode: Shell-script; sh_shell: "bash"; -*-
+
+alias scsv='curl -L http://git.io/unix'
+alias wtt='curl wttr.in/mashhad'
+
+cheat() {
+  curl cheat.sh/"$1"
+}

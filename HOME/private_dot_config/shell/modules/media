@@ -1,0 +1,37 @@
+# -*- mode: Shell-script; sh_shell: "bash"; -*-
+
+alias mpv='mpv --audio-display=no'
+#alias mvq='mv "$(quodlibet --print-query=title=$(quodlibet --print-playing "<title>"))" .'
+alias amvq='quodlibet --print-query=title="$(quodlibet --print-playing "'"<title>"'")"'
+alias yt-dlp='proxychains yt-dlp'
+alias yt3='yt-dlp -f ba -x --audio-format mp3 -o "%(title)s"'
+
+# move currently playing song
+mvq() {
+  set -x
+  title=$(quodlibet --print-playing '<title>')
+  filename=$(quodlibet --print-query="${title}"|tail -1)
+  mv "${filename}"  .
+  set +x
+}
+
+youtube_mp3() {
+  yt-dlp \
+  -f ba \
+  -audio \
+  -format mp3 \
+  -quality 0 $1 &>/dev/null |
+  tail -3
+}
+
+mp3it() {
+  ffmpeg -i $1 -vn -ar 44100 -ac 2 -b:a 192k $2
+}
+
+ytp() {
+  yt-dlp -f ba -x --audio-format mp3 -o - "${1}" | ffplay -nodisp -autoexit -i -
+}
+
+ytpv() {
+  yt-dlp -f ba -x --audio-format mp3 -o - "${1}" | mpv -
+}
