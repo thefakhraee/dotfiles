@@ -1,2 +1,3 @@
-debug          = false
-debug_full     = false
+debug			= false
+debug_full		= false
+#insecure_registry	= true

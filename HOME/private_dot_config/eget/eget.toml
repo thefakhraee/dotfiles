@@ -1,7 +1,7 @@
 [global]
 target = "~/.local/bin"
 quiet = false
-upgrade_only = true
+#upgrade_only = true
 
 ["twpayne/chezmoi"]
 asset_filters = [ "linux_amd64", ".tar.gz" ]
@@ -38,3 +38,6 @@ asset_filters = [ "linux-gnu" ]
 asset_filters = [ ".tar.xz" ]
 all = true
 
+["v2fly/v2ray-core"]
+asset_filters = [ "linux-64.zip", "^dgst" ]
+file = "v2ray"

@@ -29,10 +29,6 @@ alias cat='batcat'
 # mv
 alias mv='mv -i'
 
-# nerdctl
-alias nd='nerdctl'
-alias ndr='nerdctl run --rm'
-
 # incognito
 # the space character at the beginning -- with the hist_ignore_space setting enabled it won't add the unset to your shell history either.
 alias incognito=' unset HISTFILE'

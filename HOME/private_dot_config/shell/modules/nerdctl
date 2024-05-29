@@ -1,0 +1,14 @@
+# -*- mode: Shell-script; sh_shell: "bash"; -*-
+
+alias nd='nerdctl'
+alias nde='nd exec -it'
+alias ndi='nd images'
+alias ndii='ndi --format="{{.Repository}}:{{.Tag}} {{.Size}}"'
+alias ndir='nd image rm'
+alias ndr='nd run --runtime=/usr/bin/crun'
+alias ndrr='ndr --rm'
+alias ndpl='nd pull'
+alias ndps='nd ps'
+alias ndd='nd rm'
+alias ndsp='nd stop'
+alias ndst='nd start'

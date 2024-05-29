@@ -1,11 +1,14 @@
 [Unit]
 Description=SOCKS5 load balancing proxy
+Documentation=https://github.com/extremecoders-re/go-dispatch-proxy
 After=network.target
 
 [Service]
 Type=idle
 EnvironmentFile=%h/.config/environment.d/go-dispatch-proxy.conf
 ExecStart=%h/.local/bin/go-dispatch-proxy -lport $LISTEN -tunnel $TUNNELS
+Restart=on-failure
+RestartPreventExitStatus=23
 
 [Install]
 WantedBy=default.target

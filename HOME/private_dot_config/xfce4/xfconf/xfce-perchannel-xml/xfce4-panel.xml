@@ -159,12 +159,12 @@
       <property name="enter-opacity" type="uint" value="100"/>
       <property name="leave-opacity" type="uint" value="100"/>
       <property name="autohide-behavior" type="uint" value="0"/>
-      <property name="background-style" type="uint" value="0"/>
+      <property name="background-style" type="uint" value="1"/>
       <property name="background-rgba" type="array">
-        <value type="double" value="0.60392156862745094"/>
-        <value type="double" value="0.59999999999999998"/>
-        <value type="double" value="0.58823529411764708"/>
-        <value type="double" value="1"/>
+        <value type="double" value="0.47300000000000003"/>
+        <value type="double" value="0.53885585585585583"/>
+        <value type="double" value="0.71666666666666667"/>
+        <value type="double" value="0.81756756756756754"/>
       </property>
       <property name="length-adjust" type="bool" value="false"/>
       <property name="background-image" type="string" value=""/>

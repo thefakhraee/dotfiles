@@ -6,3 +6,7 @@ alias wtt='curl wttr.in/mashhad'
 cheat() {
   curl cheat.sh/"$1"
 }
+
+html2txt() {
+  curl -s "${1}"|vilistextum -e 0 - -
+}

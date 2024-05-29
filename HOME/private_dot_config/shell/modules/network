@@ -15,6 +15,25 @@ p() {
 }
 
 suks() {
-  addr="${1:-localhost:5000}"
-  curl --socks5 "${addr}" http://checkip.amazonaws.com
+  command="${1}"
+  default_addr='127.0.0.1:5000'
+  [[ -n "${command}" ]] && shift
+  
+  case "${command}" in
+    test|'')
+      addr="${1:-$default_addr}"
+      echo "Testing socks proxy at ${addr}"
+      curl --connect-timeout 7 --socks5 "${addr}" http://checkip.amazonaws.com
+      ;;
+    up)
+      export HTTP_PROXY=socks5://"${default_addr}" &&
+      echo "HTTP_PROXY set to ${default_addr}"
+      ;;
+    down)
+      export HTTP_PROXY=''
+      ;;
+    *)
+      echo 'Err'
+      ;;
+  esac
 }

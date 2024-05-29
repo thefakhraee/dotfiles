@@ -23,3 +23,4 @@ alias sudo sudo  $*
 alias youtube_mp3 proxychains yt-dlp -f ba --extract-audio --audio-format mp3 --audio-quality 0 $*
 alias clear clear t
 alias p ping $1.$1.$1.$1
+alias html2txt curl -s $*|vilistextum -e 0 - -

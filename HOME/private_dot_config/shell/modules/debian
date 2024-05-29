@@ -37,7 +37,7 @@ pdo() {
       curl -s "https://sources.debian.org/api/src/${query}/" | jq '.versions.[] | .version'
       ;;
     V|Verson)
-      curl -s "https://packages.debian.org/search?keywords=${query}&searchon=names&suite=all&section=all"|vilistextum -e 0 - -|awk '/Exact hits/,/Other hits/'
+      html2txt "https://packages.debian.org/search?keywords=${query}&searchon=names&suite=all&section=all"|awk '/Exact hits/,/Other hits/'
       ;;
     *|'')
       return 1
