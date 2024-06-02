@@ -10,7 +10,7 @@
   <property name="misc-borders-default" type="bool" value="false"/>
   <property name="misc-cursor-blinks" type="bool" value="false"/>
   <property name="misc-cursor-shape" type="string" value="TERMINAL_CURSOR_SHAPE_BLOCK"/>
-  <property name="misc-default-geometry" type="string" value="80x24"/>
+  <property name="misc-default-geometry" type="string" value="87x23"/>
   <property name="misc-inherit-geometry" type="bool" value="false"/>
   <property name="misc-menubar-default" type="bool" value="false"/>
   <property name="misc-mouse-autohide" type="bool" value="true"/>

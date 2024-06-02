@@ -2,6 +2,9 @@
 
 source <(cat $HOME/.config/shell/modules/*)
 
+# $PATH
+export PATH="$PATH:$HOME/.local/bin"
+
 # Default Editor
 export EDITOR=/etc/alternatives/editor
 
@@ -48,6 +51,10 @@ alias pyweb='hostname -I && python3 -m http.server'
 alias syslog='sudo xtail /var/log/syslog'
 alias mg='mg -n'
 alias emc="emacsclient"
+
+# chezmoi
+alias cz='chezmoi'
+alias czs='chezmoi status'
 
 source_completion(){
   [[ -f /etc/bash_completion ]] && ! shopt -oq posix && . /etc/bash_completion

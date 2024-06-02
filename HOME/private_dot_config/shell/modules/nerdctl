@@ -1,14 +1,24 @@
 # -*- mode: Shell-script; sh_shell: "bash"; -*-
 
+ND_DEFAULT_IMG='docker.arvancloud.ir/library/debian:unstable-slim'
+
+
 alias nd='nerdctl'
-alias nde='nd exec -it'
-alias ndi='nd images'
-alias ndii='ndi --format="{{.Repository}}:{{.Tag}} {{.Size}}"'
-alias ndir='nd image rm'
-alias ndr='nd run --runtime=/usr/bin/crun'
-alias ndrr='ndr --rm'
-alias ndpl='nd pull'
-alias ndps='nd ps'
-alias ndd='nd rm'
-alias ndsp='nd stop'
-alias ndst='nd start'
+alias nde='nerdctl exec -it'
+alias ndii='nerdctl images --format="{{.Repository}}:{{.Tag}} {{.Size}}"'
+alias ndr='nerdctl run --runtime=/usr/bin/crun'
+alias ndrr='nerdctl run --runtime=/usr/bin/crun --rm'
+
+
+ndn() {
+  local IFS=$'\n'
+  select item in `nerdctl images --format="{{.Repository}}:{{.Tag}}"`; do
+    img="${item}"
+    break
+  done
+  [[ -z "${img}" ]] && img="${ND_DEFAULT_IMG}"
+
+  tput bold
+  echo "nerdctl run --rm -it ${img} $@\n"
+  nerdctl run --rm -it "${img}" $@
+}

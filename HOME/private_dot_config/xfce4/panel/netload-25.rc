@@ -1,6 +1,6 @@
 Use_Label=false
-Show_Values=true
-Show_Bars=false
+Show_Values=false
+Show_Bars=true
 Colorize_Values=true
 Color_In=rgb(26,95,180)
 Color_Out=rgb(198,70,0)

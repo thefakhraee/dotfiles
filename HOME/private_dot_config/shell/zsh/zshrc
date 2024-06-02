@@ -20,9 +20,6 @@ HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.zsh_history
 
-# $PATH
-export PATH="$PATH:$HOME/.local/bin"
-
 # Emacs Tramp
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
 
