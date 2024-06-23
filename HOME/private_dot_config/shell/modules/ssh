@@ -29,3 +29,7 @@ sshR() {
            "${using}" 2>&1 >/dev/null | \
        awk '/^Allocated/ {print $3}'
 }
+
+hssh() {
+  ssh -t "${1}" 'HISTFILE=/dev/null bash -l'
+}
