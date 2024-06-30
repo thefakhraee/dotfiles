@@ -18,6 +18,7 @@
 (bind-keys* :prefix-map local-shell-map
 	    :prefix "M-<backspace>"
 	    ("M-<backspace>" . vterm-toggle)
+	    ("<backspace>" . vterm)
 	    ("e" . eshell)
 	    ("h" . consult-history)
 	    ("k" . vterm-send-next-key)

@@ -13,6 +13,7 @@ local_opt="$HOME/.local/opt"
 export EGET_CONFIG="$HOME/.config/eget/eget.toml"
 export EGET_BIN="$HOME/.local/bin"
 
+# aliases
 # ls
 alias ls='ls --literal --color=auto'
 alias l='ls -1'
@@ -53,6 +54,8 @@ alias mg='mg -n'
 alias emc='emacsclient'
 alias chz='chezmoi'
 
+
+# functions
 source_completion(){
   [[ -f /etc/bash_completion ]] && ! shopt -oq posix && . /etc/bash_completion
 }
@@ -111,3 +114,14 @@ gdiffr() {
 # change up n dirs
 # https://www.commandlinefu.com/commands/view/10751/quickly-cd-out-of-directories-without-5-aliases
 up() { local x='';for i in $(seq ${1:-1});do x="$x../"; done;cd $x; }
+
+#chezmoi one by one
+ch1() {
+  for ln in $(chezmoi status|awk '{print $2}'); do
+    chezmoi diff "${ln}"
+    tput bold
+    echo -e "File: \n${ln}"
+    tput sgr0
+    read -r
+  done
+}
