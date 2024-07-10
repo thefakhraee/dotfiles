@@ -38,7 +38,7 @@
   <property name="title-mode" type="string" value="TERMINAL_TITLE_REPLACE"/>
   <property name="color-foreground" type="string" value="#839496"/>
   <property name="color-background" type="string" value="#002b36"/>
-  <property name="color-background-vary" type="bool" value="false"/>
+  <property name="color-background-vary" type="bool" value="true"/>
   <property name="color-cursor-foreground" type="string" value=""/>
   <property name="color-cursor" type="string" value="#93a1a1"/>
   <property name="color-cursor-use-default" type="bool" value="true"/>

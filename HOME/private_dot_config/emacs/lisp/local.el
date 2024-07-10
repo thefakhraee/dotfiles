@@ -67,7 +67,7 @@
 (defun local/memoir ()
   "Open the memoir"
   (interactive)
-  (setq memoir-file "~/Sync/Documents/org/else_memoir.org")
+  (setq memoir-file "~/Sync/Documents/org/me.org")
   (switch-to-buffer (find-file-noselect memoir-file))
   (set-window-point
      (get-buffer-window (current-buffer) 'visible)

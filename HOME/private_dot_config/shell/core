@@ -52,7 +52,6 @@ alias pyweb='hostname -I && python3 -m http.server'
 alias syslog='sudo xtail /var/log/syslog'
 alias mg='mg -n'
 alias emc='emacsclient'
-alias chz='chezmoi'
 
 
 # functions
@@ -114,6 +113,11 @@ gdiffr() {
 # change up n dirs
 # https://www.commandlinefu.com/commands/view/10751/quickly-cd-out-of-directories-without-5-aliases
 up() { local x='';for i in $(seq ${1:-1});do x="$x../"; done;cd $x; }
+
+#chezmoi
+chz() {
+  [[ -z "${1}" ]] && chezmoi status || chezmoi "${@}"
+}
 
 #chezmoi one by one
 ch1() {

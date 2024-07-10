@@ -30,6 +30,7 @@
     	    ("c" . avy-goto-char)
 	    ("f" . consult-find)
 	    ("g" . consult-grep)
+	    ("i" . consult-imenu)
 	    ("l" . consult-goto-line)
 	    ("m" . consult-line-multi)
 	    ("o" . consult-outline)
