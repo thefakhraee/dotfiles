@@ -4,8 +4,8 @@
 ; this will make customize to clutter init.el file
 ;(load (locate-user-emacs-file "lisp/custom.el"))
 
-;; Local Variables
-(load (locate-user-emacs-file "lisp/vars.el"))
+;; Local Conf
+(load (locate-user-emacs-file "lisp/conf.el"))
 
 ;; Local Functions
 (load (locate-user-emacs-file "lisp/local.el"))
