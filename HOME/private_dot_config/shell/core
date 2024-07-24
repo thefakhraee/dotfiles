@@ -1,6 +1,8 @@
 # -*- mode: Shell-script; sh_shell: "bash"; -*-
-
 source <(cat $HOME/.config/shell/modules/*)
+
+# LSCOLORS
+eval $(dircolors $HOME/.config/shell/dircolors.ansi-dark)
 
 # $PATH
 export PATH="$PATH:$HOME/.local/bin"

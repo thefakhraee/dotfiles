@@ -69,7 +69,7 @@
       <property name="&lt;Super&gt;v" type="string" value="xfce4-terminal --title=&apos;vterm&apos; -e &quot;emacsclient -te &apos;(vterm t)&apos;&quot;"/>
       <property name="&lt;Shift&gt;&lt;Super&gt;ISO_Left_Tab" type="string" value="jumpapp -R emacs"/>
       <property name="&lt;Super&gt;Tab" type="string" value="jumpapp -w emacs"/>
-      <property name="&lt;Super&gt;p" type="string" value="rofi-rbw -r &apos;rbw&apos; --selector rofi --selector-args &quot;-show drun -theme-str &apos;window {location: south; anchor: south;}&apos;&quot;"/>
+      <property name="&lt;Super&gt;p" type="string" value="rofi-rbw -r &apos;rbw&apos; -a copy --selector rofi --selector-args &quot;-show drun -theme-str &apos;window {location: south; anchor: south;}&apos;&quot;"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">

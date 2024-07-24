@@ -30,10 +30,6 @@ HISTFILE=~/.zsh_history
 ajz='/usr/share/autojump/autojump.zsh'
 [[ -f $ajz ]] && source $ajz
 
-# colors
-eval $(dircolors -b)
-[[ -s "/etc/grc.zsh" ]] && source /etc/grc.zsh
-
 # run functions
 create_local_opt
 add_opt_liquidprompt

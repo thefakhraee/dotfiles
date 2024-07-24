@@ -20,9 +20,6 @@ shopt -s autocd
 # correct typos
 shopt -s cdspell
 
-# colors
-eval $(dircolors -b)
-
 # run functions
 source_completion
 create_local_opt
