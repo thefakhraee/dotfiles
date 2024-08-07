@@ -1,6 +1,7 @@
 source $HOME/.config/shell/core
 source $HOME/.config/shell/zsh/aliases
 source $HOME/.config/shell/zsh/zshrc
+source $HOME/.config/shell/zsh/emacs.zsh
 source $HOME/.config/shell/zsh/chezmoi.zsh
 source $HOME/.config/shell/zsh/nerdctl.zsh
-source $HOME/.config/shell/zsh/rbw.zsh 
+source $HOME/.config/shell/zsh/rbw.zsh

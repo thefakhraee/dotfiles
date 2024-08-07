@@ -94,3 +94,6 @@
   (let* ((input-string (read-string "Enter a string with Persian numerals: ")))
     (message "Converted string: %s" (convert-persian-to-western input-string))))
 
+(defun local/toggle-selective-display ()
+  (interactive)
+  (set-selective-display (if selective-display nil 1)))

@@ -47,6 +47,8 @@
  '(initial-buffer-choice t)
  '(marginalia-max-relative-age 0)
  '(marginalia-mode t)
+ '(multi-vterm-dedicated-window-height 0)
+ '(multi-vterm-dedicated-window-height-percent 35)
  '(org-download-screenshot-method "xfce4-screenshooter -r -o cat > %s")
  '(org-mode-hook
    '(#[0 "\300\301\302\303\304$\207"

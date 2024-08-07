@@ -165,6 +165,7 @@
       <property name="&lt;Super&gt;comma" type="string" value="tile_down_left_key"/>
       <property name="&lt;Super&gt;period" type="string" value="tile_down_right_key"/>
       <property name="&lt;Super&gt;slash" type="string" value="popup_menu_key"/>
+      <property name="&lt;Super&gt;x" type="string" value="workspace_3_key"/>
     </property>
   </property>
   <property name="providers" type="array">

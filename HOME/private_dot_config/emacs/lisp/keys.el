@@ -20,12 +20,12 @@
 	    ("M-<backspace>" . multi-vterm-dedicated-toggle)
 	    ("<backspace>" . multi-vterm)
 	    ("S-<backspace>" . multi-vterm-rename-buffer)
-	    ("]" . multi-vterm-next)
 	    ("[" . multi-vterm-prev)
+	    ("]" . multi-vterm-next)
 	    ("e" . eat)
-	    ("l" . eshell)
 	    ("h" . consult-history)
 	    ("k" . vterm-send-next-key)
+	    ("l" . eshell)
 	    )
 
 (bind-keys* :prefix-map local-search-map
@@ -55,33 +55,34 @@
 (bind-keys* :prefix-map local-firstclass-map
 	    :prefix "M-o"
 	    ("M-o" . package-list-packages)
-	    ("i" . package-install)
-	    ("r" . package-autoremove)
-	    ("i" . ibuffer)
-	    ("t" . trashed)
-	    ("n" . customize-option)
-	    ("z" . customize-group)
-	    ("v" . revert-buffer)
-	    ("c" . display-fill-column-indicator-mode)
-	    ("m" . tmm-menubar)
+	    ("*" . org-emphasize)
 	    ("?" . man)
 	    ("SPC" . whitespace-mode)
+	    ("c" . comment-region)
 	    ("f" . consult-recent-file)
+	    ("i" . ibuffer)
+	    ("m" . tmm-menubar)
+	    ("n" . customize-option)
+	    ("r" . package-autoremove)
 	    ("s" . server-mode)
-	    ("*" . org-emphasize)
+	    ("t" . trashed)
+	    ("v" . revert-buffer)
+	    ("z" . customize-group)
 	    )
 
 (bind-keys* :prefix-map local-2ndclass-map
 	    :prefix "M-["
-	    ("r" . shr-render-buffer)
-	    ("x" . desktop-read)
+	    ("<" . writeroom-decrease-width)
+	    (">" . writeroom-increase-width)
 	    ("X" . desktop-save-in-desktop-dir)
-	    ("y" . consult-yank-from-kill-ring)
+	    ("c" . display-fill-column-indicator-mode)
 	    ("g" . playerctl-play-pause-song)
+	    ("i" . package-install)
 	    ("n" . playerctl-next-song)
 	    ("p" . playerctl-previous-song)
-	    (">" . writeroom-increase-width)
-	    ("<" . writeroom-decrease-width)
+	    ("r" . shr-render-buffer)
+	    ("x" . desktop-read)
+	    ("y" . consult-yank-from-kill-ring)
 	    )
 
 (bind-keys* :prefix-map local-local-map
@@ -91,6 +92,7 @@
 	    ("0" . local/unsocks)
 	    ("1" . local/socks)
 	    ("b" . local/bidi)
+	    ("f" . local/toggle-selective-display)
 	    )
 
 ;;; In Persian Layout

@@ -11,7 +11,7 @@
     <property name="button_spacing" type="int" value="0"/>
     <property name="click_to_focus" type="bool" value="true"/>
     <property name="cycle_apps_only" type="bool" value="false"/>
-    <property name="cycle_draw_frame" type="bool" value="false"/>
+    <property name="cycle_draw_frame" type="bool" value="true"/>
     <property name="cycle_raise" type="bool" value="false"/>
     <property name="cycle_hidden" type="bool" value="true"/>
     <property name="cycle_minimum" type="bool" value="true"/>
@@ -44,7 +44,7 @@
     <property name="raise_with_any_button" type="bool" value="true"/>
     <property name="repeat_urgent_blink" type="bool" value="true"/>
     <property name="resize_opacity" type="int" value="100"/>
-    <property name="scroll_workspaces" type="bool" value="true"/>
+    <property name="scroll_workspaces" type="bool" value="false"/>
     <property name="shadow_delta_height" type="int" value="0"/>
     <property name="shadow_delta_width" type="int" value="0"/>
     <property name="shadow_delta_x" type="int" value="0"/>
@@ -52,7 +52,7 @@
     <property name="shadow_opacity" type="int" value="50"/>
     <property name="show_app_icon" type="bool" value="false"/>
     <property name="show_dock_shadow" type="bool" value="true"/>
-    <property name="show_frame_shadow" type="bool" value="false"/>
+    <property name="show_frame_shadow" type="bool" value="true"/>
     <property name="show_popup_shadow" type="bool" value="true"/>
     <property name="snap_resist" type="bool" value="false"/>
     <property name="snap_to_border" type="bool" value="true"/>
@@ -73,7 +73,7 @@
     <property name="unredirect_overlays" type="bool" value="true"/>
     <property name="urgent_blink" type="bool" value="true"/>
     <property name="use_compositing" type="bool" value="true"/>
-    <property name="workspace_count" type="int" value="2"/>
+    <property name="workspace_count" type="int" value="3"/>
     <property name="wrap_cycle" type="bool" value="true"/>
     <property name="wrap_layout" type="bool" value="true"/>
     <property name="wrap_resistance" type="int" value="5"/>
