@@ -2,7 +2,6 @@
 # configurations. The main goal of these additional functions is to enable the
 # shell to send information to `vterm` via properly escaped sequences. A
 # function that helps in this task, `vterm_printf`, is defined below.
-
 vterm_printf() {
     if [ -n "$TMUX" ] && ([ "${TERM%%-*}" = "tmux" ] || [ "${TERM%%-*}" = "screen" ] ); then
         # Tell tmux to pass the escape sequences through
@@ -35,30 +34,13 @@ vterm_cmd() {
     vterm_printf "51;E$vterm_elisp"
 }
 
-# This is to change the title of the buffer based on information provided by the
-# shell. See, http://tldp.org/HOWTO/Xterm-Title-4.html, for the meaning of the
-# various symbols.
-#autoload -U add-zsh-hook
-#add-zsh-hook -Uz chpwd (){ print -Pn "\e]2;%m:%2~\a" }
-
-# Sync directory and host in the shell with Emacs's current directory.
-# You may need to manually specify the hostname instead of $(hostname) in case
-# $(hostname) does not return the correct string to connect to the server.
-#
-# The escape sequence "51;A" has also the role of identifying the end of the
-# prompt
-vterm_prompt_end() {
-    vterm_printf "51;A$(whoami)@$(hostname):$(pwd)"
+# Directory tracking
+# https://github.com/akermu/emacs-libvterm?tab=readme-ov-file#how-can-i-get-the-directory-tracking-in-a-more-understandable-way
+vterm_set_directory() {
+    vterm_cmd update-pwd "$PWD/"
 }
-
-setopt PROMPT_SUBST
-PROMPT=$PROMPT'$(vterm_prompt_end)'
 autoload -U add-zsh-hook
 add-zsh-hook -Uz chpwd() { vterm_set_directory }
 
 # Emacs Tramp
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
-
-#[[ -n "$INSIDE_EMACS" ]] && chpwd() { print -P "\033AnSiTc %d" }
-[[ -n "${INSIDE_EMACS}" ]] && chpwd() { print -P "\032/$(pwd)" } || true
-

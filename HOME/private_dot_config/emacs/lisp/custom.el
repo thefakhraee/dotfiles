@@ -32,6 +32,7 @@
    '(org-download-enable dired-hide-dotfiles-mode dired-hide-details-mode))
  '(dired-recursive-copies 'always)
  '(diredfl-global-mode t nil (diredfl))
+ '(dirvish-override-dired-mode t)
  '(doc-view-resolution 144)
  '(ediff-split-window-function 'split-window-horizontally)
  '(ediff-window-setup-function 'ediff-setup-windows-plain)
@@ -65,7 +66,7 @@
      ("melpa" . "https://raw.githubusercontent.com/d12frosted/elpa-mirror/master/melpa/")
      ("nongnu" . "https://raw.githubusercontent.com/d12frosted/elpa-mirror/master/nongnu/")))
  '(package-selected-packages
-   '(eat multi-vterm drag-stuff org-web-tools systemd mini-modeline writeroom-mode diredfl json-mode doom-themes xterm-color lsp-ui lsp-mode flycheck yaml-mode ox-reveal celestial-mode-line rainbow-delimiters eshell-syntax-highlighting trashed org-download dired-hide-dotfiles playerctl compat embark-consult ace-window crux org-modern corfu popper pulsar which-key vertico orderless marginalia embark bind-key bash-completion avy))
+   '(dirvish eat multi-vterm drag-stuff org-web-tools systemd mini-modeline writeroom-mode diredfl json-mode doom-themes xterm-color flycheck yaml-mode ox-reveal celestial-mode-line rainbow-delimiters eshell-syntax-highlighting trashed org-download dired-hide-dotfiles playerctl compat embark-consult ace-window crux org-modern corfu popper pulsar which-key vertico orderless marginalia embark bind-key bash-completion avy))
  '(popper-echo-mode t)
  '(popper-mode t)
  '(popper-reference-buffers
@@ -79,7 +80,6 @@
  '(repeat-mode t)
  '(safe-local-variable-values '((sh_shell . "bash")))
  '(savehist-mode t)
- '(sh-basic-offset 2)
  '(shell-dynamic-complete-functions
    '(comint-c-a-p-replace-by-expanded-history shell-environment-variable-completion shell-command-completion shell-c-a-p-replace-by-expanded-directory pcomplete-completions-at-point shell-filename-completion comint-filename-completion bash-completion-dynamic-complete))
  '(shell-file-name "/bin/zsh")
@@ -98,12 +98,7 @@
       (lambda
 	(path)
 	(setq default-directory path)))
-     ("find-file" find-file)
-     ("message" message)
-     ("vterm-clear-scrollback" vterm-clear-scrollback)
-     ("update-pwd" lambda
-      (path)
-      (setq default-directory path))))
+     ("vterm-clear-scrollback" vterm-clear-scrollback)))
  '(vterm-max-scrollback 10000)
  '(vterm-shell "/bin/zsh")
  '(warning-suppress-types '((comp)))
@@ -119,4 +114,5 @@
  ;; If there is more than one, they won't work right.
  '(aw-leading-char-face ((t (:foreground "dark violet" :height 1.7))))
  '(mini-modeline-mode-line ((t (:background "#b3ee3a" :box nil :height 0.14))))
+ '(mode-line-inactive ((t (:height 0.9))))
  '(region ((t nil))))

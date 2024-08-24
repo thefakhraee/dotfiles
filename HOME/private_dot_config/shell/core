@@ -11,9 +11,13 @@ export PATH="$PATH:$HOME/.local/bin"
 export EDITOR=/etc/alternatives/editor
 
 # User
-local_opt="$HOME/.local/opt"
+LOCAL_HOME="$HOME/.local"
+LOCAL_BIN="$LOCAL_HOME/bin"
+LOCAL_ETC="$LOCAL_HOME/etc"
+LOCAL_MNT="$LOCAL_HOME/mnt"
+LOCAL_OPT="$LOCAL_HOME/opt"
+export EGET_BIN="$LOCAL_BIN"
 export EGET_CONFIG="$HOME/.config/eget/eget.toml"
-export EGET_BIN="$HOME/.local/bin"
 
 # aliases
 # ls
@@ -61,12 +65,15 @@ source_completion(){
   [[ -f /etc/bash_completion ]] && ! shopt -oq posix && . /etc/bash_completion
 }
 
-create_local_opt() {
-  [[ -d "${local_opt}" ]] || mkdir -p "${local_opt}"
+create_local_dirs() {
+  [[ -d "${LOCAL_BIN}" ]] || mkdir -p "${LOCAL_BIN}"
+  [[ -d "${LOCAL_ETC}" ]] || mkdir -p "${LOCAL_ETC}"
+  [[ -d "${LOCAL_MNT}" ]] || mkdir -p "${LOCAL_MNT}"
+  [[ -d "${LOCAL_OPT}" ]] || mkdir -p "${LOCAL_OPT}"
 }
 
 add_opt_liquidprompt() {
-  local liquidprompt_source="${local_opt}/liquidprompt/liquidprompt"
+  local liquidprompt_source="${LOCAL_OPT}/liquidprompt/liquidprompt"
   [[ -f "${liquidprompt_source}" ]] || \
   git clone --depth 1 \
     https://github.com/nojhan/liquidprompt.git "${liquidprompt_source%/*}"
@@ -88,7 +95,7 @@ add_opt_fzf() {
       ;;
   esac
   local fzf_git_url='https://github.com/junegunn/fzf.git'
-  local fzf_source="${local_opt}/fzf"
+  local fzf_source="${LOCAL_OPT}/fzf"
   local fzf_config="${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.${fzf_dot}
 
   [[ -d "${fzf_source}" ]] || git clone --depth 1 ${fzf_git_url} "${fzf_source}"
