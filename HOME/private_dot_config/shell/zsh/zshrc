@@ -2,8 +2,6 @@
 
 # run functions
 create_local_dirs
-add_opt_liquidprompt
-add_opt_fzf zsh
 
 # Load all stock functions (from $fpath files) called below.
 autoload -Uz compaudit compinit
@@ -32,3 +30,14 @@ HISTFILE=~/.zsh_history
 
 # get bash complete to work in zsh
 #[[ -n "$ZSH_VERSION" ]] && autoload bashcompinit && bashcompinit
+
+# fzf
+fzf_completion_debian=/usr/share/doc/fzf/examples/completion.zsh
+fzf_keys_debian=/usr/share/doc/fzf/examples/key-bindings.zsh
+[[ -f ${fzf_completion_debian} ]] && source ${fzf_completion_debian}
+[[ -f ${fzf_keys_debian} ]] && source ${fzf_keys_debian}
+
+# liquidprompt
+# Only load liquidprompt in interactive shells, not from a script or from scp
+echo $- | grep -q i 2>/dev/null && . /usr/share/liquidprompt/liquidprompt
+

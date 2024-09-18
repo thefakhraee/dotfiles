@@ -5,7 +5,12 @@ Colorize_Values=true
 Color_In=rgb(26,95,180)
 Color_Out=rgb(198,70,0)
 Text=Net
-Network_Device=wlx503eaa78f03f
+{{ if eq .chezmoi.hostname "kanka" -}}
+Network_Device={{- .kanka.wifi_dev -}}
+{{ end }}
+{{ if eq .chezmoi.hostname "jupiter" -}}
+Network_Device={{- .jupiter.wifi_dev -}}
+{{ end -}}
 Max_In=4096
 Max_Out=4096
 Auto_Max=true

@@ -1,3 +1,7 @@
+[jupiter]
+wifi_dev = "wlan0"
+dispatch_servers = "127.0.0.1:1080@3"
+
 [kanka]
 wifi_dev = "wlx503eaa78f03f"
 dispatch_servers = "127.0.0.1:1080@3 127.0.0.1:9050@1 94.182.19.169:10808@2 94.182.19.169:20808@2"

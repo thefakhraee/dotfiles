@@ -66,7 +66,7 @@
      ("melpa" . "https://raw.githubusercontent.com/d12frosted/elpa-mirror/master/melpa/")
      ("nongnu" . "https://raw.githubusercontent.com/d12frosted/elpa-mirror/master/nongnu/")))
  '(package-selected-packages
-   '(dirvish eat multi-vterm drag-stuff org-web-tools systemd mini-modeline writeroom-mode diredfl json-mode doom-themes xterm-color flycheck yaml-mode ox-reveal celestial-mode-line rainbow-delimiters eshell-syntax-highlighting trashed org-download dired-hide-dotfiles playerctl compat embark-consult ace-window crux org-modern corfu popper pulsar which-key vertico orderless marginalia embark bind-key bash-completion avy))
+   '(dirvish eat multi-vterm drag-stuff org-web-tools systemd writeroom-mode diredfl json-mode doom-themes xterm-color flycheck yaml-mode ox-reveal celestial-mode-line rainbow-delimiters eshell-syntax-highlighting trashed org-download dired-hide-dotfiles playerctl compat embark-consult ace-window crux org-modern corfu popper pulsar which-key vertico orderless marginalia embark bind-key bash-completion avy))
  '(popper-echo-mode t)
  '(popper-mode t)
  '(popper-reference-buffers
@@ -113,6 +113,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(aw-leading-char-face ((t (:foreground "dark violet" :height 1.7))))
- '(mini-modeline-mode-line ((t (:background "#b3ee3a" :box nil :height 0.14))))
- '(mode-line-inactive ((t (:height 0.9))))
+ '(mode-line-buffer-id ((t (:foreground "OliveDrab3" :weight bold))))
+ '(mode-line-inactive ((t (:background "#202020" :foreground "#626262" :box nil :height 0.7))))
  '(region ((t nil))))

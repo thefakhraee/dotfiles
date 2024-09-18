@@ -33,14 +33,17 @@ pdo() {
   query="${2}"
 
   case "${arg}" in
-    v|version)
-      curl -s "https://sources.debian.org/api/src/${query}/" | jq '.versions.[] | .version'
-      ;;
-    V|Verson)
-      html2txt "https://packages.debian.org/search?keywords=${query}&searchon=names&suite=all&section=all"|awk '/Exact hits/,/Other hits/'
-      ;;
-    *|'')
-      return 1
-      ;;
-  esac
+      v|version)
+	  curl -s "https://sources.debian.org/api/src/${query}/" | jq '.versions.[] | .version'
+	  ;;
+      V|Version)
+	  html2txt "https://packages.debian.org/search?keywords=${query}&searchon=names&suite=all&section=all"|awk '/Exact hits/,/Other hits/'
+	  ;;
+      f|file)
+	  html2txt "https://packages.debian.org/search?searchon=contents&keywords=${query}&mode=filename&suite=testing&arch=amd64"|awk '/You have searched/,/---/'
+	  ;;
+      *|'')
+	  return 1
+	  ;;
+      esac
 }

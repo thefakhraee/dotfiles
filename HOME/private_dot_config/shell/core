@@ -72,42 +72,6 @@ create_local_dirs() {
   [[ -d "${LOCAL_OPT}" ]] || mkdir -p "${LOCAL_OPT}"
 }
 
-add_opt_liquidprompt() {
-  local liquidprompt_source="${LOCAL_OPT}/liquidprompt/liquidprompt"
-  [[ -f "${liquidprompt_source}" ]] || \
-  git clone --depth 1 \
-    https://github.com/nojhan/liquidprompt.git "${liquidprompt_source%/*}"
-  source "${liquidprompt_source}"
-}
-
-add_opt_fzf() {
-  case "${1}" in
-    bash|'')
-      local no_shell=zsh
-      local fzf_dot='bash'
-      ;;
-    zsh)
-      local no_shell=bash
-      local fzf_dot='zsh'
-      ;;
-    *)
-      return 1
-      ;;
-  esac
-  local fzf_git_url='https://github.com/junegunn/fzf.git'
-  local fzf_source="${LOCAL_OPT}/fzf"
-  local fzf_config="${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.${fzf_dot}
-
-  [[ -d "${fzf_source}" ]] || git clone --depth 1 ${fzf_git_url} "${fzf_source}"
-  [[ ! -e "${fzf_config}" ]] && \
-  echo n | ${fzf_source}/install --xdg \
-                                 --key-bindings \
-                                 --completion \
-                                 --no-fish \
-                                 --no-${no_shell}
-  source "${fzf_config}"
-}
-
 # courtsey of grml
 R() {
   exec $SHELL $SHELL_ARGS "$@"
@@ -122,19 +86,3 @@ gdiffr() {
 # change up n dirs
 # https://www.commandlinefu.com/commands/view/10751/quickly-cd-out-of-directories-without-5-aliases
 up() { local x='';for i in $(seq ${1:-1});do x="$x../"; done;cd $x; }
-
-#chezmoi
-chz() {
-  [[ -z "${1}" ]] && chezmoi status || chezmoi "${@}"
-}
-
-#chezmoi one by one
-ch1() {
-  for ln in $(chezmoi status|awk '{print $2}'); do
-    chezmoi diff "${ln}"
-    tput bold
-    echo -e "File: \n${ln}"
-    tput sgr0
-    read -r
-  done
-}

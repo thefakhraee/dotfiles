@@ -1,0 +1,22 @@
+# -*- mode: Shell-script; sh_shell: "bash"; -*-
+
+# chezmoi
+chz() {
+  [[ -z "${1}" ]] && chezmoi status || chezmoi "${@}"
+}
+
+# chezmoi one by one
+ch1() {
+  for ln in $(chezmoi status|awk '{print $2}'); do
+    chezmoi diff $HOME/"${ln}"
+    tput bold
+    echo -e "File: \n${ln}"
+    tput sgr0
+    read -r
+  done
+}
+
+# chezmoi edit
+che() {
+    chezmoi edit --apply "${1}"
+}
