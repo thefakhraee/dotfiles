@@ -1,20 +1,19 @@
 # -*- mode: Shell-script; sh_shell: "bash"; -*-
 
-alias pgg='ping google.com'
 alias axl='axel -a -n 8'
 alias dg='dig +{,no}short'
 
-wgetr() {
+my/network/wgetr() {
   wget --no-directories --recursive --level=1 --execute robots=off "${1}"
 }
 
-p() {
+my/network/p() {
   addr="$1.$1.$1.$1"
   shift
   ping $@ $addr
 }
 
-suks() {
+my/network/suks() {
   command="${1}"
   default_addr='127.0.0.1:5000'
   [[ -n "${command}" ]] && shift

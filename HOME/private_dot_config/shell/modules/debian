@@ -1,34 +1,22 @@
 # -*- mode: Shell-script; sh_shell: "bash"; -*-
 
-alias apts='apt search'
-alias apti='run0 apt install'
-alias aptp='run0 apt purge'
-alias debs-by-size="dpkg-query -Wf 'x \${Installed-Size} \${Package} \${Status}\n' | sed -ne '/^x  /d' -e '/^x \(.*\) install ok installed$/s//\1/p' | sort -nr"
+alias my/debian/debs-by-size="dpkg-query -Wf 'x \${Installed-Size} \${Package} \${Status}\n' | sed -ne '/^x  /d' -e '/^x \(.*\) install ok installed$/s//\1/p' | sort -nr"
 
 
 # update, upgrade, clean
-updg() {
+my/debian/updg() {
        sudo -- sh -c 'apt update && apt upgrade -y && apt autoremove -y && apt clean'
 }
 
-# update only $this repo
-update_repo() {
-  for source in "$@".list; do
-    sudo apt-get update -o Dir::Etc::sourcelist="sources.list.d/${source}" \
-                        -o Dir::Etc::sourceparts="-" \
-                        -o APT::Get::List-Cleanup="0"
-  done
-}
-
 # purge unused kernels and headers
-unuker() {
+my/debian/unuker() {
  kv=$(uname -r|awk -F- '{print $1"-"$2}')
  sudo aptitude purge \
  "?installed?or(linux-headers-[0-9],linux-image-[0-9]) ?installed?not(${kv})"
 }
 
 # query debian packages
-pdo() {
+my/debian/pdo() {
   arg="${1}"
   query="${2}"
 
@@ -37,10 +25,10 @@ pdo() {
 	  curl -s "https://sources.debian.org/api/src/${query}/" | jq '.versions.[] | .version'
 	  ;;
       V|Version)
-	  html2txt "https://packages.debian.org/search?keywords=${query}&searchon=names&suite=all&section=all"|awk '/Exact hits/,/Other hits/'
+	  my/misc/html2txt "https://packages.debian.org/search?keywords=${query}&searchon=names&suite=all&section=all"|awk '/Exact hits/,/Other hits/'
 	  ;;
       f|file)
-	  html2txt "https://packages.debian.org/search?searchon=contents&keywords=${query}&mode=filename&suite=testing&arch=amd64"|awk '/You have searched/,/---/'
+	  my/misc/html2txt "https://packages.debian.org/search?searchon=contents&keywords=${query}&mode=filename&suite=testing&arch=amd64"|awk '/You have searched/,/---/'
 	  ;;
       *|'')
 	  return 1

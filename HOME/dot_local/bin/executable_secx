@@ -1,23 +1,36 @@
 #!/usr/bin/env bash
+secx_saver=$(mktemp)
+secx_conf="$HOME/.config/secx.conf"
 
-picture=$(find $HOME/Pictures/bing/ -type f | shuf -n 1)
-saver=$(mktemp)
+if [[ -f ${secx_conf} ]]; then
+    source ${secx_conf}
+else
+    echo 'Error: No config file found'
+    exit 1
+fi
 
 # https://github.com/google/xsecurelock/issues/92#issuecomment-646305188
-echo '#!/usr/bin/env bash' >"${saver}"
-echo 'hex_num=$(printf "%x" $XSCREENSAVER_WINDOW)' >>"${saver}"
-echo 'window_id=0x$hex_num' >>"${saver}"
-echo "xloadimage -onroot -fullscreen -windowid \$window_id $picture"\
-     >>"${saver}"
-chmod +x "${saver}"
+echo '#!/usr/bin/env bash
+hex_num=$(printf "%x" $XSCREENSAVER_WINDOW)
+window_id=0x$hex_num
+while :; do
+picture=$(find $HOME/Pictures/bing/ -type f | sort -R | shuf -n 1)
+xloadimage -onroot -fullscreen -windowid ${window_id} "${picture}"
+echo "${picture}" >>/tmp/.secx_list
+sleep ${secx_interval}
+done' >>"${secx_saver}" &&
+chmod +x "${secx_saver}"
 
-XSECURELOCK_SAVER="${saver}" \
-XSECURELOCK_BLANK_DPMS_STATE=suspend \
-XSECURELOCK_DISCARD_FIRST_KEYPRESS=0 \
-XSECURELOCK_BLANK_TIMEOUT=600 \
-XSECURELOCK_PASSWORD_PROMPT=cursor \
-XSECURELOCK_SHOW_DATETIME=1 \
-XSECURELOCK_SHOW_HOSTNAME=0 \
-XSECURELOCK_SHOW_USERNAME=0 \
-xsecurelock &>/dev/null && rm -f "${saver}" &&
-notify-send -t 10000 "$picture"
+XSECURELOCK_SAVER="${secx_saver}" \
+XSECURELOCK_AUTH_TIMEOUT=${XSECURELOCK_AUTH_TIMEOUT} \
+XSECURELOCK_BLANK_TIMEOUT=${XSECURELOCK_BLANK_TIMEOUT} \
+XSECURELOCK_BLANK_DPMS_STATE=${XSECURELOCK_BLANK_DPMS_STATE} \
+XSECURELOCK_DISCARD_FIRST_KEYPRESS=${XSECURELOCK_DISCARD_FIRST_KEYPRESS} \
+XSECURELOCK_FONT=${XSECURELOCK_FONT} \
+XSECURELOCK_PASSWORD_PROMPT=${XSECURELOCK_PASSWORD_PROMPT} \
+XSECURELOCK_SHOW_DATETIME=${XSECURELOCK_SHOW_DATETIME} \
+XSECURELOCK_SHOW_HOSTNAME=${XSECURELOCK_SHOW_HOSTNAME} \
+XSECURELOCK_SHOW_USERNAME=${XSECURELOCK_SHOW_USERNAME} \
+xsecurelock &>/dev/null &&
+rm -f "${secx_saver}"
+#notify-send -t 10000 "$picture"

@@ -1,12 +1,12 @@
 # -*- mode: Shell-script; sh_shell: "bash"; -*-
 
 # chezmoi
-chz() {
+my/chezmoi/() {
   [[ -z "${1}" ]] && chezmoi status || chezmoi "${@}"
 }
 
 # chezmoi one by one
-ch1() {
+my/chezmoi/loop() {
   for ln in $(chezmoi status|awk '{print $2}'); do
     chezmoi diff $HOME/"${ln}"
     tput bold
@@ -17,6 +17,6 @@ ch1() {
 }
 
 # chezmoi edit
-che() {
+my/chezmoi/edit() {
     chezmoi edit --apply "${1}"
 }

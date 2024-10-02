@@ -1,4 +1,4 @@
-(defun local/kill-that-buffer ()
+(defun my/kill-that-buffer ()
   "Kill the buffer on other window."
   (interactive)
   (other-window 1)
@@ -7,7 +7,7 @@
   )
 
 ;;; Persian
-(defun local/bidi ()
+(defun my/bidi ()
   "RTL mode for Persian."
   (interactive)
   (setq-local bidi-paragraph-direction 'nil)
@@ -16,7 +16,7 @@
   )
 
 ;;; Socks 9050
-(defun local/socks ()
+(defun my/socks ()
   "Use Socks on 9050."
   (interactive)
   (setq-local socks-override-functions t)
@@ -26,7 +26,7 @@
   (message "Socks Proxy ON")
   )
 
-(defun local/unsocks ()
+(defun my/unsocks ()
   "Disable Socks."
   (interactive)
   (setq-local url-gateway-method 'native)
@@ -36,7 +36,7 @@
 
 ;;https://oleksandrmanzyuk.wordpress.com/2011/09/21/using-google-translate-from-emacs/
 ; (thing-at-point 'word 'no-properties)
-(defun local/google-translate (text)
+(defun my/google-translate (text)
   "Translate using Google Translate."
   (interactive
    (list
@@ -49,7 +49,7 @@
                      (format "trans -no-auto -d -no-bidi -t fa \"%s\"" text))))))
 
 ;; https://emacs.stackexchange.com/questions/5371/how-to-change-emacs-windows-from-vertical-split-to-horizontal-split
-(defun local/window-split-toggle ()
+(defun my/window-split-toggle ()
   "Toggle between horizontal and vertical split with two windows."
   (interactive)
   (if (> (length (window-list)) 2)
@@ -64,7 +64,7 @@
         (switch-to-buffer (other-buffer))))))
 
 
-(defun local/memoir ()
+(defun my/memoir ()
   "Open the memoir"
   (interactive)
   (setq memoir-file "~/Sync/Documents/org/me.org")
@@ -88,12 +88,12 @@
   (replace-regexp-in-string "۹" "9"
   input-string)))))))))))
 
-(defun local/convert-pnumbers ()
+(defun my/convert-pnumbers ()
   "Interactive function to convert Persian numerals to Western numerals."
   (interactive)
   (let* ((input-string (read-string "Enter a string with Persian numerals: ")))
     (message "Converted string: %s" (convert-persian-to-western input-string))))
 
-(defun local/toggle-selective-display ()
+(defun my/toggle-selective-display ()
   (interactive)
   (set-selective-display (if selective-display nil 1)))

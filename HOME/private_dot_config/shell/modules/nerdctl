@@ -2,15 +2,11 @@
 
 ND_DEFAULT_IMG='docker.arvancloud.ir/library/debian:unstable-slim'
 
+alias my/nerdctl/ndii='nerdctl images --format="{{.Repository}}:{{.Tag}} {{.Size}}"'
+alias my/nerdctl/ndr='nerdctl run --runtime=/usr/bin/crun'
+alias my/nerdctl/ndrr='nerdctl run --runtime=/usr/bin/crun --rm'
 
-alias nd='nerdctl'
-alias nde='nerdctl exec -it'
-alias ndii='nerdctl images --format="{{.Repository}}:{{.Tag}} {{.Size}}"'
-alias ndr='nerdctl run --runtime=/usr/bin/crun'
-alias ndrr='nerdctl run --runtime=/usr/bin/crun --rm'
-
-
-ndn() {
+my/nerdctl/ndn() {
   local IFS=$'\n'
   select item in `nerdctl images --format="{{.Repository}}:{{.Tag}}"`; do
     img="${item}"

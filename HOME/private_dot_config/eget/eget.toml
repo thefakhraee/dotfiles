@@ -3,6 +3,8 @@ target = "~/.local/bin"
 quiet = false
 #upgrade_only = true
 
+["zyedidia/eget"]
+
 ["twpayne/chezmoi"]
 asset_filters = [ "linux_amd64", ".tar.gz" ]
 file = "chezmoi"
@@ -41,3 +43,7 @@ all = true
 ["v2fly/v2ray-core"]
 asset_filters = [ "linux-64.zip", "^dgst" ]
 file = "v2ray"
+
+["lostdusty/cobalt"]
+asset_filters = [ "cobalt-linux-amd64.tar.gz" ]
+target = "~/.local/bin/cobalt"

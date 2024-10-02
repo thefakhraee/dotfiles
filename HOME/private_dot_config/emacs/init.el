@@ -7,8 +7,8 @@
 ;; Local Conf
 (load (locate-user-emacs-file "lisp/conf.el"))
 
-;; Local Functions
-(load (locate-user-emacs-file "lisp/local.el"))
+;; My Functions
+(load (locate-user-emacs-file "lisp/my.el"))
 
 ;; Key Bindings
 (load (locate-user-emacs-file "lisp/keys.el"))

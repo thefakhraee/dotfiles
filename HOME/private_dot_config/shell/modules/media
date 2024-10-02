@@ -4,7 +4,6 @@ alias mpv='mpv --audio-display=no'
 #alias mvq='mv "$(quodlibet --print-query=title=$(quodlibet --print-playing "<title>"))" .'
 alias amvq='quodlibet --print-query=title="$(quodlibet --print-playing "'"<title>"'")"'
 alias yt-dlp='proxychains yt-dlp'
-alias yt3='yt-dlp -f ba -x --audio-format mp3 -o "%(title)s"'
 
 # move currently playing song
 mvq() {
@@ -15,23 +14,22 @@ mvq() {
   set +x
 }
 
-youtube_mp3() {
-  yt-dlp \
-  -f ba \
-  -audio \
-  -format mp3 \
-  -quality 0 $1 &>/dev/null |
-  tail -3
-}
-
-mp3it() {
+my/media/mp3it() {
   ffmpeg -i $1 -vn -ar 44100 -ac 2 -b:a 192k $2
 }
 
-ytp() {
+# Youtube
+# Play Youtube audio
+my/media/yta_play() {
   yt-dlp -f ba -x --audio-format mp3 -o - "${1}" | ffplay -nodisp -autoexit -i -
 }
 
-ytpv() {
+# Play Youtube video
+my/media/ytv_play() {
   yt-dlp -f ba -x --audio-format mp3 -o - "${1}" | mpv -
 }
+
+my/media/yt2mp3() {
+    yt-dlp -f ba -x --audio-format mp3 -o "%(title)s" "${1}"
+}
+# /Youtube

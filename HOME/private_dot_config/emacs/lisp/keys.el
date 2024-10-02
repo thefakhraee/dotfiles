@@ -4,18 +4,18 @@
  ("M-SPC" . consult-buffer)
  ("M-S-SPC" . consult-buffer-other-window)
  ("M--" . popper-toggle)
- ("M-_" . writeroom-mode)
+ ("M-_" . dirvish-side)
  ("M-\\" . kill-process)
  ("C-c l" . org-store-link))
 
-(bind-keys* :prefix-map local-window-map
+(bind-keys* :prefix-map my-window-map
 	    :prefix "M-`"
 	    ("M-`" . ace-window)
 	    ("<tab>" . window-swap-states)
-	    ("SPC" . local/window-split-toggle)
+	    ("SPC" . my/window-split-toggle)
 	    )
 
-(bind-keys* :prefix-map local-shell-map
+(bind-keys* :prefix-map my-shell-map
 	    :prefix "M-<backspace>"
 	    ("M-<backspace>" . multi-vterm-dedicated-toggle)
 	    ("<backspace>" . multi-vterm)
@@ -28,7 +28,7 @@
 	    ("l" . eshell)
 	    )
 
-(bind-keys* :prefix-map local-search-map
+(bind-keys* :prefix-map my-search-map
 	    :prefix "M-s"
     	    ("M-s" . consult-line)
     	    ("c" . avy-goto-char)
@@ -42,7 +42,7 @@
 	    ("u" . consult-focus-lines)
 	    )
 
-(bind-keys* :prefix-map local-embark-map
+(bind-keys* :prefix-map my-embark-map
 	    :prefix "M-;"
 	    ("a" . embark-act)
 	    ("b" . embark-become)
@@ -52,7 +52,7 @@
 	    ("l" . embark-live)
 	    )
 
-(bind-keys* :prefix-map local-firstclass-map
+(bind-keys* :prefix-map my-firstclass-map
 	    :prefix "M-o"
 	    ("M-o" . package-list-packages)
 	    ("*" . org-emphasize)
@@ -70,7 +70,7 @@
 	    ("z" . customize-group)
 	    )
 
-(bind-keys* :prefix-map local-2ndclass-map
+(bind-keys* :prefix-map my-2ndclass-map
 	    :prefix "M-["
 	    ("<" . writeroom-decrease-width)
 	    (">" . writeroom-increase-width)
@@ -85,14 +85,14 @@
 	    ("y" . consult-yank-from-kill-ring)
 	    )
 
-(bind-keys* :prefix-map local-local-map
+(bind-keys* :prefix-map my-my-map
 	    :prefix "M-]"
-	    ("M-]" . local/memoir)
-	    ("]" . local/google-translate)
-	    ("0" . local/unsocks)
-	    ("1" . local/socks)
-	    ("b" . local/bidi)
-	    ("f" . local/toggle-selective-display)
+	    ("M-]" . my/memoir)
+	    ("]" . my/google-translate)
+	    ("0" . my/unsocks)
+	    ("1" . my/socks)
+	    ("b" . my/bidi)
+	    ("f" . my/toggle-selective-display)
 	    )
 
 ;;; In Persian Layout
@@ -112,7 +112,7 @@
  ("M-ب" . forward-word)
  ("M-ذ" . backward-word)
  ("M-ن" . kill-line)
- ("M-چ" . local/bidi)
+ ("M-چ" . my/bidi)
  ("M-ز" . display-fill-column-indicator-mode))
 
 ;;;
