@@ -1,7 +1,11 @@
 # -*- mode: Shell-script; sh_shell: "bash"; -*-
 
-alias my/debian/debs-by-size="dpkg-query -Wf 'x \${Installed-Size} \${Package} \${Status}\n' | sed -ne '/^x  /d' -e '/^x \(.*\) install ok installed$/s//\1/p' | sort -nr"
+alias updg='my/debian/updg'
+alias unuker='my/debian/unuker'
 
+my/debian/debs-by-size() {
+    dpkg-query -Wf 'x \${Installed-Size} \${Package} \${Status}\n' | sed -ne '/^x  /d' -e '/^x \(.*\) install ok installed$/s//\1/p' | sort -nr
+}
 
 # update, upgrade, clean
 my/debian/updg() {

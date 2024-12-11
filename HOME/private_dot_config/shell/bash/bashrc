@@ -23,7 +23,7 @@ shopt -s cdspell
 # run functions
 source_completion
 create_local_dirs
-add_opt_liquidprompt
-add_opt_fzf
+
+#echo $- | grep -q i 2>/dev/null && . /usr/share/liquidprompt/liquidprompt
 
 PS1=$PS1'\[$(vterm_prompt_end)\]'

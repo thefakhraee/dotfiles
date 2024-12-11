@@ -1,6 +1,6 @@
 Command=sh -c '$HOME/.local/bin/show mem free 2>/dev/null'
 UseLabel=0
 Text=mem avail
-UpdatePeriod=30000
-Font=Vazir Code Hack Extra Height 11
+UpdatePeriod=5000
+Font=Vazir Code Hack Extra Height Bold 11
 

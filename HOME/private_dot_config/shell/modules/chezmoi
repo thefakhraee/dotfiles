@@ -1,5 +1,8 @@
 # -*- mode: Shell-script; sh_shell: "bash"; -*-
 
+alias chz='my/chezmoi/'
+alias chz1='my/chezmoi/loop'
+
 # chezmoi
 my/chezmoi/() {
   [[ -z "${1}" ]] && chezmoi status || chezmoi "${@}"

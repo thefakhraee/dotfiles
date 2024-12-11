@@ -5,8 +5,14 @@ export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
 
 alias ssh='ssh -o ServerAliveInterval=60'
 alias sagent='eval $(ssh-agent -s)'
-alias my/ssh/sshtl='sshuttle --disable-ipv6 --dns --to-ns 9.9.9.9 -r'
-alias my/ssh/sshkt='ssh -D 127.0.0.1:9050'
+
+my/ssh/sshtl() {
+    sshuttle --disable-ipv6 --dns --to-ns 9.9.9.9 -r
+}
+
+my/ssh/sshkt() {
+    ssh -D 127.0.0.1:9050
+}
 
 my/ssh/sshL() {
   # 43:whois.arin.net:43

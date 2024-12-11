@@ -1,6 +1,6 @@
 #compdef chezmoi
 compdef _chezmoi chezmoi
-compdef _chezmoi chz
+compdef _chezmoi my/chezmoi/
 
 # zsh completion for chezmoi                              -*- shell-script -*-
 

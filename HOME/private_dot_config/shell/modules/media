@@ -4,6 +4,7 @@ alias mpv='mpv --audio-display=no'
 #alias mvq='mv "$(quodlibet --print-query=title=$(quodlibet --print-playing "<title>"))" .'
 alias amvq='quodlibet --print-query=title="$(quodlibet --print-playing "'"<title>"'")"'
 alias yt-dlp='proxychains yt-dlp'
+alias yt3='my/media/yt2mp3'
 
 # move currently playing song
 mvq() {

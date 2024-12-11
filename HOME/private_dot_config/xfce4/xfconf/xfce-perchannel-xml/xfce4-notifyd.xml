@@ -42,7 +42,7 @@
   <property name="do-slideout" type="bool" value="true"/>
   <property name="do-fadeout" type="bool" value="true"/>
   <property name="do-not-disturb" type="bool" value="false"/>
-  <property name="expire-timeout" type="int" value="4"/>
+  <property name="expire-timeout" type="int" value="2"/>
   <property name="notification-log" type="bool" value="true"/>
   <property name="log-max-size-enabled" type="bool" value="true"/>
   <property name="show-notifications-on" type="string" value="all-monitors"/>

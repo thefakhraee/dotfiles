@@ -1,7 +1,12 @@
 # -*- mode: Shell-script; sh_shell: "bash"; -*-
 
-alias my/misc/scsv='curl -L http://git.io/unix'
-alias my/misc/wtt='curl wttr.in/mashhad'
+my/misc/scsv() {
+    curl -L http://git.io/unix
+}
+
+my/misc/wtt() {
+    curl wttr.in/mashhad
+}
 
 my/misc/cheat() {
   curl cheat.sh/"$1"
